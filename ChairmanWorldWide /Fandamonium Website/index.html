@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Fandamonium — fan-powered music voting + discussion." />
+  <title>Fandamonium — Fan-Powered Music Voting</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LVMQ5PCV6N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LVMQ5PCV6N');
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --red:#FE0039;
+      --navy:#0A1627;
+      --silver:#C1C1C1;
+      --text:#E9EEF7;
+      --muted:#A9B3C4;
+      --card:#0F223C;
+      --card2:#0B1A2F;
+      --stroke: rgba(193,193,193,.18);
+      --glow: rgba(254,0,57,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 15% 20%, rgba(254,0,57,.18), transparent 55%),
+        radial-gradient(900px 600px at 85% 25%, rgba(193,193,193,.10), transparent 60%),
+        linear-gradient(180deg, #081120, var(--navy));
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(10,22,39,.55);
+      border-bottom:1px solid var(--stroke);
+    }
+    .topbar-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      height:64px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;
+      letter-spacing:.5px;
+    }
+    .logo{
+      width:36px;height:36px;border-radius:12px;
+      background: radial-gradient(circle at 30% 30%, rgba(254,0,57,.95), rgba(254,0,57,.35) 55%, rgba(10,22,39,.15) 78%);
+      border:1px solid rgba(254,0,57,.35);
+      box-shadow: 0 0 20px rgba(254,0,57,.15);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo::after{
+      content:"";
+      position:absolute;inset:-20%;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(193,193,193,.18) 0px,
+        rgba(193,193,193,.18) 2px,
+        transparent 2px,
+        transparent 10px
+      );
+      transform: rotate(18deg);
+      opacity:.35;
+    }
+    .brand-name{
+      font-family:"Amatic SC", cursive;
+      font-size:30px;
+      color:var(--red);
+      line-height:1;
+    }
+    nav{
+      display:flex;align-items:center;gap:18px;
+      font-size:14px;color:var(--muted);
+    }
+    nav a{padding:8px 10px;border-radius:10px}
+    nav a:hover{background:rgba(193,193,193,.06);color:var(--text)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 14px;border-radius:14px;
+      border:1px solid var(--stroke);
+      background: rgba(193,193,193,.06);
+      color:var(--text);
+      font-weight:600;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(0,0,0,.22)}
+    .btn-primary{
+      border:1px solid rgba(254,0,57,.45);
+      background: linear-gradient(180deg, rgba(254,0,57,.95), rgba(254,0,57,.65));
+      box-shadow: 0 0 0 0 rgba(254,0,57,.0);
+    }
+    .btn-primary:hover{box-shadow:0 0 0 6px rgba(254,0,57,.12), 0 14px 34px rgba(0,0,0,.28)}
+    .hero{
+      padding:64px 0 26px;
+      position:relative;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:26px;
+      align-items:stretch;
+    }
+    .kicker{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(254,0,57,.28);
+      background: rgba(254,0,57,.08);
+      color:#ffd5df;
+      font-size:12px;
+      letter-spacing:.3px;
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size:52px;line-height:1.0;
+      letter-spacing:-1px;
+    }
+    .sub{
+      margin:0;
+      font-size:18px;
+      color:var(--muted);
+      max-width:56ch;
+      line-height:1.5;
+    }
+    .cta-row{
+      margin-top:18px;
+      display:flex;gap:12px;flex-wrap:wrap;
+      align-items:center;
+    }
+    .mini{
+      font-size:13px;color:rgba(193,193,193,.85);
+    }
+    .card{
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(15,34,60,.92), rgba(11,26,47,.92));
+      border-radius:22px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.25);
+      overflow:hidden;
+    }
+    .mock{
+      position:relative;
+      padding:16px;
+      height:100%;
+      min-height:330px;
+    }
+    .mock-top{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;margin-bottom:14px;
+    }
+    .pill{
+      padding:8px 10px;border-radius:999px;
+      border:1px solid rgba(193,193,193,.16);
+      background: rgba(193,193,193,.06);
+      color:var(--muted);
+      font-size:12px;
+    }
+    .mock-list{display:grid;gap:10px}
+    .song{
+      display:grid;
+      grid-template-columns: 46px 1fr auto;
+      gap:12px;
+      align-items:center;
+      padding:12px;
+      border-radius:16px;
+      background: rgba(193,193,193,.04);
+      border:1px solid rgba(193,193,193,.10);
+    }
+    .art{
+      width:46px;height:46px;border-radius:14px;
+      background: radial-gradient(circle at 30% 30%, rgba(193,193,193,.22), rgba(193,193,193,.06) 55%, transparent 80%);
+      border:1px solid rgba(193,193,193,.18);
+      position:relative;
+      overflow:hidden;
+    }
+    .art::after{
+      content:"";
+      position:absolute;inset:-10%;
+      background:
+        linear-gradient(135deg, rgba(254,0,57,.25), transparent 55%);
+      opacity:.9;
+    }
+    .song h3{margin:0;font-size:14px}
+    .song p{margin:2px 0 0;font-size:12px;color:var(--muted)}
+    .vote{
+      display:flex;align-items:center;gap:8px;
+    }
+    .vbtn{
+      width:34px;height:34px;border-radius:12px;
+      border:1px solid rgba(193,193,193,.16);
+      background: rgba(193,193,193,.06);
+      color:var(--text);
+      cursor:pointer;
+      display:grid;place-items:center;
+      transition: transform .1s ease, box-shadow .1s ease, border-color .1s ease;
+      user-select:none;
+    }
+    .vbtn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.22)}
+    .vbtn.up:hover{border-color: rgba(254,0,57,.45); box-shadow:0 0 0 6px rgba(254,0,57,.10), 0 10px 24px rgba(0,0,0,.22)}
+    .score{
+      min-width:54px;text-align:right;
+      font-weight:800;
+      color:#ffd5df;
+    }
+
+    .section{padding:34px 0}
+    .section h2{
+      font-size:28px;
+      margin:0 0 10px;
+      letter-spacing:-.4px;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .feature{
+      padding:16px;border-radius:20px;
+      border:1px solid var(--stroke);
+      background: rgba(193,193,193,.04);
+      min-height:140px;
+    }
+    .feature .icon{
+      width:40px;height:40px;border-radius:14px;
+      display:grid;place-items:center;
+      border:1px solid rgba(254,0,57,.30);
+      background: rgba(254,0,57,.10);
+      box-shadow: 0 0 30px rgba(254,0,57,.12);
+      margin-bottom:12px;
+      font-weight:900;
+      color:#ffd5df;
+    }
+    .feature h3{margin:0 0 6px;font-size:16px}
+    .feature p{margin:0;color:var(--muted);line-height:1.5;font-size:14px}
+
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:start;
+    }
+    .form{
+      padding:16px;border-radius:20px;
+      border:1px solid var(--stroke);
+      background: rgba(193,193,193,.04);
+    }
+    .form label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px}
+    .row{
+      display:flex;gap:10px;flex-wrap:wrap;
+    }
+    input, select{
+      height:44px;
+      border-radius:14px;
+      border:1px solid rgba(193,193,193,.16);
+      background: rgba(10,22,39,.55);
+      color:var(--text);
+      padding:0 12px;
+      outline:none;
+      min-width:240px;
+      flex:1;
+    }
+    input:focus, select:focus{border-color: rgba(254,0,57,.45); box-shadow:0 0 0 6px rgba(254,0,57,.10)}
+    .tiny-note{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.5}
+    .faq{
+      display:grid;gap:10px;
+    }
+    details{
+      border:1px solid var(--stroke);
+      background: rgba(193,193,193,.04);
+      border-radius:18px;
+      padding:12px 14px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:700;
+    }
+    details p{color:var(--muted);margin:10px 0 0;line-height:1.5}
+    footer{
+      padding:26px 0 46px;
+      border-top:1px solid var(--stroke);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .foot{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      h1{font-size:44px}
+      .grid-3{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr}
+      nav{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="brand-name">Fandamonium</div>
+      </a>
+
+      <nav aria-label="Primary">
+        <a href="#features" data-track="nav_features">Features</a>
+        <a href="#how" data-track="nav_how">How it works</a>
+        <a href="#waitlist" data-track="nav_ios">iOS</a>
+        <a href="#faq" data-track="nav_faq">FAQ</a>
+      </nav>
+
+     
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="kicker">Fan-powered music voting + real discussion</span>
+          <h1>Where fans decide what’s hot.</h1>
+          <p class="sub">
+            Fandamonium is the home for music debates, rankings, and culture-driven conversation.
+            Vote on songs, climb the leaderboard, and shape what trends next.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary"
+               href="https://app.fandamoniumapp.com"
+               target="_blank"
+               rel="noopener"
+               onclick="gtag('event','launch_web_app_click',{event_category:'cta',event_label:'hero'});">
+              Launch Web App
+            </a>
+            <a class="btn" href="#waitlist" data-track="hero_ios_cta">iOS App (Coming Soon)</a>
+            <span class="mini">Web beta live • iOS next • Android after</span>
+          </div>
+        </div>
+
+        <div class="card mock" aria-label="Product preview">
+          <div class="mock-top">
+            <span class="pill">Trending right now</span>
+            <span class="pill">Fan Score™</span>
+          </div>
+
+          <div class="mock-list" id="songList">
+            <!-- JS will populate -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="wrap">
+        <h2>Built for fans, not gatekeepers</h2>
+        <div class="grid-3">
+          <div class="feature">
+            <div class="icon">▲</div>
+            <h3>Vote on anything</h3>
+            <p>Tracks, albums, artists, eras, genres. If it can be debated, it can be voted.</p>
+          </div>
+          <div class="feature">
+            <div class="icon">💬</div>
+            <h3>Clean discussion</h3>
+            <p>Threaded conversations with upvoted comments. Less chaos than Discord.</p>
+          </div>
+          <div class="feature">
+            <div class="icon">🏆</div>
+            <h3>Leaderboards + badges</h3>
+            <p>Earn status for being early, consistent, and sharp with your takes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap split">
+        <div class="card" style="padding:18px">
+          <h2 style="margin:0 0 10px">How it works</h2>
+          <p style="margin:0;color:var(--muted);line-height:1.6">
+            1) Follow genres and artists.<br>
+            2) Vote up/down on songs and hot takes.<br>
+            3) Discuss with real structure — not noise.<br>
+            4) Weekly charts update based on fan score + vote velocity.
+          </p>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="pill">Weekly Top 10</span>
+            <span class="pill">Most Controversial</span>
+            <span class="pill">Risers</span>
+            <span class="pill">Fan Battles</span>
+          </div>
+
+          <div class="cta-row" style="margin-top:14px">
+            <a class="btn"
+               href="#waitlist"
+               data-track="how_ios_cta">
+              Get iOS updates
+            </a>
+            <a class="btn"
+               href="https://app.fandamoniumapp.com"
+               target="_blank"
+               rel="noopener"
+               onclick="gtag('event','launch_web_app_click',{event_category:'cta',event_label:'how_section'});">
+              Use Web Beta
+            </a>
+          </div>
+        </div>
+
+        <div class="form" id="waitlist">
+          <h2 style="margin:0 0 10px">iOS App (Coming Soon)</h2>
+          <label for="email">Email</label>
+
+          <form id="waitlistForm" name="waitlist" method="POST" data-netlify="true" action="thanks.html">
+            <input type="hidden" name="form-name" value="waitlist" />
+
+            <div class="row">
+              <input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required />
+              <select id="genre" name="genre" required>
+                <option value="Hip-Hop">Hip-Hop</option>
+                <option value="R&B">R&B</option>
+                <option value="Pop">Pop</option>
+                <option value="Rock">Rock</option>
+                <option value="Gospel">Gospel</option>
+                <option value="EDM">EDM</option>
+                <option value="Indie">Indie</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="cta-row" style="margin-top:12px">
+              <button class="btn btn-primary"
+                      type="submit"
+                      onclick="gtag('event','waitlist_submit_click',{event_category:'conversion',event_label:'ios_waitlist_button'});">
+                Get iOS updates
+              </button>
+              <span class="mini" aria-live="polite">No spam. Just beta invites + launch updates.</span>
+            </div>
+
+            <div class="tiny-note">
+              Prefer to use it now? Launch the web beta:
+              <a href="https://app.fandamoniumapp.com"
+                 target="_blank"
+                 rel="noopener"
+                 onclick="gtag('event','launch_web_app_click',{event_category:'cta',event_label:'waitlist_note'});"
+                 style="text-decoration:underline;">
+                app.fandamoniumapp.com
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <h2>FAQ</h2>
+        <div class="faq">
+          <details>
+            <summary data-track="faq_discord">Is this a Discord clone?</summary>
+            <p>No. Discord is chat-first. Fandamonium is voting + threads first, with cleaner structure and discovery.</p>
+          </details>
+          <details>
+            <summary data-track="faq_spam">How do you stop spam and brigading?</summary>
+            <p>One-vote-per-user, rate limits, anomaly detection on vote velocity, and moderation tools.</p>
+          </details>
+          <details>
+            <summary data-track="faq_spotify">Will you use Spotify/Apple Music data?</summary>
+            <p>Yes — artwork and metadata via APIs. Playback depends on licensing and platform rules.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <span style="font-family:'Amatic SC', cursive; font-size:22px; color:var(--red);">Fandamonium</span>
+        <span style="margin-left:10px;">© <span id="year"></span></span>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="pill"
+           href="https://app.fandamoniumapp.com"
+           target="_blank"
+           rel="noopener"
+           onclick="gtag('event','launch_web_app_click',{event_category:'cta',event_label:'footer'});">
+          Launch Web App
+        </a>
+        <a class="pill" href="#features" data-track="footer_features">Features</a>
+        <a class="pill" href="#top" data-track="footer_top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Demo data for mock UI
+    const songs = [
+      { title: "Midnight Drive", artist: "AURORA V", score: 1284 },
+      { title: "No Hook, All Truth", artist: "KINGSWAY", score: 1017 },
+      { title: "City on Fire", artist: "VELVET RUN", score: 942 },
+      { title: "Slow Burn Anthem", artist: "NEON SAINT", score: 811 },
+    ];
+
+    const list = document.getElementById("songList");
+    const fmt = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    function renderSongs() {
+      list.innerHTML = "";
+      songs.forEach((s, i) => {
+        const row = document.createElement("div");
+        row.className = "song";
+        row.innerHTML = `
+          <div class="art" aria-hidden="true"></div>
+          <div>
+            <h3>${i+1}. ${s.title}</h3>
+            <p>${s.artist}</p>
+          </div>
+          <div class="vote">
+            <button class="vbtn up" aria-label="Upvote ${s.title}" data-i="${i}" data-dir="up" type="button">▲</button>
+            <button class="vbtn" aria-label="Downvote ${s.title}" data-i="${i}" data-dir="down" type="button">▼</button>
+            <div class="score" aria-label="Score">${fmt(s.score)}</div>
+          </div>
+        `;
+        list.appendChild(row);
+      });
+    }
+
+    // Vote buttons: update demo scores + track engagement
+    list.addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+
+      const i = Number(btn.dataset.i);
+      const dir = btn.dataset.dir;
+
+      if (dir === "up") songs[i].score += 7;
+      else songs[i].score -= 5;
+
+      // Track mock votes
+      if (typeof gtag === "function") {
+        gtag("event", "mock_vote_click", {
+          event_category: "engagement",
+          event_label: dir,
+          song_rank: i + 1,
+          song_title: songs[i].title
+        });
+      }
+
+      renderSongs();
+    });
+
+    // Track internal clicks using data-track
+    document.addEventListener("click", (e) => {
+      const el = e.target.closest("[data-track]");
+      if (!el) return;
+      const label = el.getAttribute("data-track");
+      if (typeof gtag === "function") {
+        gtag("event", "ui_click", {
+          event_category: "navigation",
+          event_label: label
+        });
+      }
+    });
+
+    // Track successful waitlist submits (more reliable than button click alone)
+    const waitlistForm = document.getElementById("waitlistForm");
+    if (waitlistForm) {
+      waitlistForm.addEventListener("submit", () => {
+        if (typeof gtag === "function") {
+          gtag("event", "waitlist_submit", {
+            event_category: "conversion",
+            event_label: "ios_waitlist"
+          });
+        }
+      });
+    }
+
+    // Scroll depth tracking (25/50/75/90)
+    (function(){
+      const fired = new Set();
+      function send(pct){
+        if (fired.has(pct)) return;
+        fired.add(pct);
+        if (typeof gtag === "function") {
+          gtag("event", "scroll_depth", {
+            event_category: "engagement",
+            event_label: pct + "%"
+          });
+        }
+      }
+      window.addEventListener("scroll", () => {
+        const doc = document.documentElement;
+        const scrollTop = doc.scrollTop || document.body.scrollTop;
+        const scrollHeight = doc.scrollHeight - doc.clientHeight;
+        if (scrollHeight <= 0) return;
+        const pct = Math.round((scrollTop / scrollHeight) * 100);
+        if (pct >= 25) send(25);
+        if (pct >= 50) send(50);
+        if (pct >= 75) send(75);
+        if (pct >= 90) send(90);
+      }, { passive:true });
+    })();
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderSongs();
+  </script>
+</body>
+</html>
