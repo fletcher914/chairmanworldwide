@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frequency Black</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#000;
+  --charcoal:#111;
+  --blue:#008CFF;
+  --white:#fff;
+  --gray:#999;
+  --line:#1c1c1c;
+}
+
+body{
+  margin:0;
+  font-family:'Raleway', sans-serif;
+  background:var(--black);
+  color:var(--white);
+}
+
+/* CONTAINER */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 20px;
+}
+
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 0;
+}
+
+.logo{
+  font-family:'Bebas Neue', sans-serif;
+  font-size:34px;
+  letter-spacing:4px;
+}
+
+.menu a{
+  margin-left:20px;
+  text-decoration:none;
+  color:var(--gray);
+  font-size:14px;
+}
+
+.menu a:hover{
+  color:var(--blue);
+}
+
+/* HERO */
+.hero{
+  padding:180px 0 140px;
+  position:relative;
+}
+
+.hero h1{
+  font-family:'Bebas Neue', sans-serif;
+  font-size:110px;
+  line-height:0.85;
+  margin:0;
+}
+
+.hero p{
+  margin-top:30px;
+  max-width:500px;
+  color:#aaa;
+  font-size:18px;
+}
+
+/* GLOW */
+.hero::after{
+  content:"";
+  position:absolute;
+  right:-200px;
+  top:-200px;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle, rgba(0,140,255,0.25), transparent);
+}
+
+/* STRIP */
+.strip{
+  overflow:hidden;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.strip-track{
+  white-space:nowrap;
+  animation:scroll 20s linear infinite;
+  padding:12px 0;
+  color:#777;
+  font-size:14px;
+}
+
+@keyframes scroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+/* FEATURE */
+.feature{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:60px;
+  padding:120px 0;
+}
+
+.feature h2{
+  font-family:'Bebas Neue', sans-serif;
+  font-size:50px;
+}
+
+.cards .card{
+  border-bottom:1px solid var(--line);
+  padding:20px 0;
+  transition:all .3s ease;
+}
+
+.card:hover{
+  transform:translateX(10px);
+}
+
+.card span{
+  font-size:12px;
+  color:#777;
+}
+
+.card h3{
+  margin:5px 0;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  padding-bottom:100px;
+}
+
+.grid div{
+  border:1px solid var(--line);
+  padding:40px;
+  transition:all .3s ease;
+}
+
+.grid div:hover{
+  border-color:var(--blue);
+  transform:translateY(-5px);
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--line);
+  text-align:center;
+  padding:30px;
+  color:#777;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero h1{font-size:60px;}
+  .feature{grid-template-columns:1fr;}
+  .grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- NAV -->
+<nav>
+  <div class="logo">FREQUENCY BLACK</div>
+  <div class="menu">
+    <a href="#">Culture</a>
+    <a href="#">Music</a>
+    <a href="#">Politics</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>
+    Culture<br>
+    Decides.<br>
+    Everything.
+  </h1>
+  <p>
+    Frequency Black explores the intersection of music, influence, and power —
+    not as entertainment, but as infrastructure.
+  </p>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-track">
+    FREQUENCY BLACK • CULTURE • MUSIC • POLITICS • ORIGINALS • ANALYSIS • FREQUENCY BLACK • CULTURE • MUSIC •
+  </div>
+</div>
+
+<!-- FEATURE -->
+<section class="feature">
+  <div>
+    <h2>What Actually Moves Culture?</h2>
+    <p>
+      It’s not what trends. It’s what shapes perception. We track the shift before it becomes visible.
+    </p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <span>Culture</span>
+      <h3>The End of Viral Thinking</h3>
+    </div>
+    <div class="card">
+      <span>Music</span>
+      <h3>Producers Control the Sound</h3>
+    </div>
+    <div class="card">
+      <span>Politics</span>
+      <h3>Influence Is the New Authority</h3>
+    </div>
+  </div>
+</section>
+
+<!-- GRID -->
+<section class="grid">
+  <div>Editorial</div>
+  <div>Commentary</div>
+  <div>Interviews</div>
+  <div>Deep Dives</div>
+</section>
+
+<footer>
+  Frequency Black © 2026
+</footer>
+
+</div>
+
+</body>
+</html>
