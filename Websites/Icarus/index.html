@@ -1,36 +1,811 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Icarus Filmworks</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Icarus Filmworks</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#0a0a0a;
+      --bg-soft:#111111;
+      --panel:#141414;
+      --line:rgba(255,255,255,0.08);
+      --text:#f5f1e8;
+      --muted:#b8afa2;
+      --gold:#c7a56a;
+      --gold-soft:rgba(199,165,106,0.18);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top right, rgba(199,165,106,0.10), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(255,255,255,0.03), transparent 30%),
+        var(--bg);
+      color:var(--text);
+      font-family:'Inter', sans-serif;
+      overflow-x:hidden;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1240px, calc(100% - 48px));
+      margin:0 auto;
+    }
+
+    /* NAV */
+    nav{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(12px);
+      background:rgba(10,10,10,0.82);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav-inner{
+      min-height:84px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+    .brand-title{
+      font-family:'Cormorant Garamond', serif;
+      font-size:2rem;
+      line-height:0.95;
+      letter-spacing:1px;
+    }
+
+    .brand-sub{
+      font-size:0.72rem;
+      text-transform:uppercase;
+      letter-spacing:0.28em;
+      color:var(--muted);
+    }
+
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+
+    .menu a{
+      color:var(--muted);
+      font-size:0.94rem;
+      transition:color .25s ease, opacity .25s ease;
+    }
+
+    .menu a:hover{
+      color:var(--text);
+    }
+
+    .menu .cta{
+      border:1px solid rgba(199,165,106,0.35);
+      padding:10px 16px;
+      border-radius:999px;
+      color:var(--text);
+      background:rgba(199,165,106,0.06);
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      padding:120px 0 72px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.3fr 0.8fr;
+      gap:48px;
+      align-items:end;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:18px;
+      font-size:0.78rem;
+      text-transform:uppercase;
+      letter-spacing:0.32em;
+      color:var(--gold);
+    }
+
+    .hero h1{
+      margin:0;
+      max-width:860px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:clamp(4rem, 9vw, 8rem);
+      line-height:0.88;
+      font-weight:600;
+      letter-spacing:-0.03em;
+    }
+
+    .hero-copy{
+      max-width:620px;
+      margin-top:22px;
+      color:var(--muted);
+      font-size:1.08rem;
+      line-height:1.8;
+    }
+
+    .hero-actions{
+      margin-top:28px;
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 18px;
+      border-radius:999px;
+      font-size:0.92rem;
+      transition:transform .25s ease, background .25s ease, border-color .25s ease;
+    }
+
+    .button.primary{
+      background:var(--text);
+      color:#0f0f0f;
+    }
+
+    .button.secondary{
+      border:1px solid var(--line);
+      color:var(--text);
+      background:rgba(255,255,255,0.02);
+    }
+
+    .button:hover{
+      transform:translateY(-2px);
+    }
+
+    .hero-panel{
+      border:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+        linear-gradient(135deg, rgba(199,165,106,0.10), rgba(255,255,255,0.01));
+      border-radius:24px;
+      padding:28px;
+      min-height:360px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-panel::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.12)),
+        radial-gradient(circle at 30% 20%, rgba(199,165,106,0.18), transparent 35%);
+      pointer-events:none;
+    }
+
+    .hero-panel-content{
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-panel-label{
+      font-size:0.72rem;
+      text-transform:uppercase;
+      letter-spacing:0.28em;
+      color:var(--gold);
+      margin-bottom:12px;
+    }
+
+    .hero-panel h2{
+      margin:0 0 10px 0;
+      font-family:'Cormorant Garamond', serif;
+      font-size:2rem;
+      line-height:1;
+    }
+
+    .hero-panel p{
+      margin:0;
+      color:#d0c8bd;
+      line-height:1.7;
+      font-size:0.98rem;
+    }
+
+    /* STRIP */
+    .strip{
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .strip-track{
+      white-space:nowrap;
+      padding:14px 0;
+      color:rgba(245,241,232,0.62);
+      font-size:0.82rem;
+      letter-spacing:0.28em;
+      text-transform:uppercase;
+      animation:scroll 24s linear infinite;
+    }
+
+    @keyframes scroll{
+      from{transform:translateX(0);}
+      to{transform:translateX(-50%);}
+    }
+
+    /* SECTIONS */
+    section{
+      border-bottom:1px solid var(--line);
+    }
+
+    .section-inner{
+      padding:88px 0;
+    }
+
+    .section-top{
+      display:grid;
+      grid-template-columns:0.75fr 1.2fr;
+      gap:44px;
+      margin-bottom:42px;
+    }
+
+    .section-kicker{
+      font-size:0.78rem;
+      text-transform:uppercase;
+      letter-spacing:0.28em;
+      color:var(--gold);
+      margin-bottom:14px;
+    }
+
+    .section-title{
+      margin:0;
+      font-family:'Cormorant Garamond', serif;
+      font-size:clamp(2.2rem, 5vw, 4rem);
+      line-height:0.95;
+      font-weight:600;
+    }
+
+    .section-copy{
+      max-width:760px;
+      margin:0;
+      color:var(--muted);
+      line-height:1.9;
+      font-size:1.03rem;
+    }
+
+    /* PROJECT GRID */
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:22px;
+    }
+
+    .project{
+      min-height:360px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      position:relative;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+        radial-gradient(circle at top, rgba(199,165,106,0.10), transparent 42%),
+        var(--panel);
+      transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+
+    .project:hover{
+      transform:translateY(-8px);
+      border-color:rgba(199,165,106,0.35);
+      box-shadow:0 22px 60px rgba(0,0,0,0.28);
+    }
+
+    .project::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.08));
+      pointer-events:none;
+    }
+
+    .project-content{
+      position:absolute;
+      left:24px;
+      right:24px;
+      bottom:24px;
+      z-index:1;
+    }
+
+    .project-type{
+      font-size:0.74rem;
+      text-transform:uppercase;
+      letter-spacing:0.24em;
+      color:var(--gold);
+      margin-bottom:10px;
+    }
+
+    .project h3{
+      margin:0 0 10px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:2rem;
+      line-height:0.95;
+      font-weight:600;
+    }
+
+    .project p{
+      margin:0;
+      color:#d6cec2;
+      font-size:0.96rem;
+      line-height:1.75;
+    }
+
+    /* MANIFESTO */
+    .manifesto{
+      display:grid;
+      grid-template-columns:1.05fr 0.95fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .manifesto-block{
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:34px;
+      background:rgba(255,255,255,0.02);
+    }
+
+    .manifesto-quote{
+      font-family:'Cormorant Garamond', serif;
+      font-size:clamp(2rem, 4vw, 3.5rem);
+      line-height:0.98;
+      margin:0;
+      max-width:650px;
+    }
+
+    .manifesto-small{
+      margin-top:18px;
+      color:var(--muted);
+      line-height:1.9;
+      max-width:560px;
+    }
+
+    /* SERVICES */
+    .services{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:18px;
+    }
+
+    .service{
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:26px 22px;
+      background:rgba(255,255,255,0.02);
+      transition:transform .28s ease, border-color .28s ease;
+    }
+
+    .service:hover{
+      transform:translateY(-6px);
+      border-color:rgba(199,165,106,0.35);
+    }
+
+    .service-number{
+      display:block;
+      margin-bottom:14px;
+      color:var(--gold);
+      font-size:0.78rem;
+      letter-spacing:0.22em;
+      text-transform:uppercase;
+    }
+
+    .service h4{
+      margin:0 0 10px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:1.6rem;
+      line-height:0.95;
+      font-weight:600;
+    }
+
+    .service p{
+      margin:0;
+      color:var(--muted);
+      font-size:0.95rem;
+      line-height:1.8;
+    }
+
+    /* CONTACT */
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:22px;
+    }
+
+    .contact-panel{
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:34px;
+      background:rgba(255,255,255,0.02);
+    }
+
+    .contact-panel h3{
+      margin:0 0 14px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:2rem;
+      line-height:0.95;
+      font-weight:600;
+    }
+
+    .contact-panel p{
+      margin:0 0 16px 0;
+      color:var(--muted);
+      line-height:1.85;
+    }
+
+    .contact-links{
+      display:grid;
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .contact-link{
+      border-top:1px solid var(--line);
+      padding-top:14px;
+      color:var(--text);
+    }
+
+    .contact-link span{
+      display:block;
+      color:var(--gold);
+      font-size:0.72rem;
+      text-transform:uppercase;
+      letter-spacing:0.22em;
+      margin-bottom:6px;
+    }
+
+    /* FOOTER */
+    footer{
+      padding:28px 0 40px;
+      color:rgba(245,241,232,0.56);
+      font-size:0.9rem;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    /* MOBILE */
+    @media (max-width: 1024px){
+      .hero-grid,
+      .section-top,
+      .manifesto,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .projects{
+        grid-template-columns:1fr;
+      }
+
+      .services{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-panel{
+        min-height:300px;
+      }
+    }
+
+    @media (max-width: 720px){
+      .container{
+        width:min(100% - 32px, 1240px);
+      }
+
+      .nav-inner{
+        min-height:auto;
+        padding:18px 0;
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .menu{
+        gap:16px;
+      }
+
+      .hero{
+        padding:92px 0 58px;
+      }
+
+      .hero-copy{
+        font-size:1rem;
+      }
+
+      .section-inner{
+        padding:64px 0;
+      }
+
+      .services{
+        grid-template-columns:1fr;
+      }
+
+      .project{
+        min-height:300px;
+      }
+
+      .brand-title{
+        font-size:1.7rem;
+      }
+    }
+  </style>
 </head>
+<body>
 
-<body class="icarus">
+  <nav>
+    <div class="container nav-inner">
+      <div class="brand">
+        <a href="#" class="brand-title">Icarus Filmworks</a>
+        <div class="brand-sub">Film • Television • Development</div>
+      </div>
 
-<nav>
-  <div class="logo">ICARUS FILMWORKS</div>
-  <div class="nav-links">
-    <a href="/">Chairman</a>
-  </div>
-</nav>
+      <div class="menu">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact" class="cta">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
 
-<section class="hero">
-  <h1>Icarus<br>Filmworks</h1>
-  <p>Original films. Visual storytelling.</p>
-</section>
+  <main>
 
-<section class="content">
-  <div class="item">Crimson Harvest</div>
-  <div class="item">[Upcoming Project]</div>
-</section>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Cinematic stories with edge</div>
+          <h1>Built for film, television, and stories that stay with people.</h1>
+          <p class="hero-copy">
+            Icarus Filmworks is a creative production banner focused on emotionally charged,
+            visually rich storytelling. We develop and produce work that feels cinematic,
+            character-driven, and culturally alive.
+          </p>
 
-<footer>
-  © Icarus Filmworks
-</footer>
+          <div class="hero-actions">
+            <a href="#projects" class="button primary">View Projects</a>
+            <a href="#contact" class="button secondary">Start a Conversation</a>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="hero-panel-content">
+            <div class="hero-panel-label">Featured vision</div>
+            <h2>Stories with heat, style, and consequence.</h2>
+            <p>
+              From dramatic features to elevated television concepts, the goal is not content for content’s sake.
+              The goal is work with atmosphere, intention, and a point of view.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip">
+      <div class="strip-track">
+        ICARUS FILMWORKS • FILM • TELEVISION • DEVELOPMENT • ORIGINAL STORIES • CINEMATIC WORLDS • CHARACTER-DRIVEN WORK • ICARUS FILMWORKS • FILM • TELEVISION • DEVELOPMENT •
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="container section-inner">
+        <div class="section-top">
+          <div>
+            <div class="section-kicker">About</div>
+            <h2 class="section-title">A studio voice with ambition and taste.</h2>
+          </div>
+
+          <p class="section-copy">
+            Icarus Filmworks is designed to sit at the intersection of artistry and audience.
+            The company develops story worlds that feel intimate but cinematic, stylish without being hollow,
+            and emotionally grounded without losing scale. This is a home for stories that know what they want to say.
+          </p>
+        </div>
+
+        <div class="manifesto">
+          <div class="manifesto-block">
+            <h3 class="manifesto-quote">
+              We want the work to feel felt — not just watched.
+            </h3>
+            <p class="manifesto-small">
+              That means sharper characters, stronger imagery, and stories that carry tension, beauty,
+              and consequence. The work should linger after the screen goes dark.
+            </p>
+          </div>
+
+          <div class="manifesto-block">
+            <p class="section-copy" style="margin:0;">
+              Whether the format is feature film, serialized television, or proof-of-concept development,
+              the creative standard stays the same: emotional truth, strong visual identity, and a sense of purpose.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container section-inner">
+        <div class="section-top">
+          <div>
+            <div class="section-kicker">Projects</div>
+            <h2 class="section-title">Work in development.</h2>
+          </div>
+
+          <p class="section-copy">
+            The slate can hold romance, tension, ambition, betrayal, family, memory, and power.
+            What matters most is voice. These are not generic ideas. They are worlds with a pulse.
+          </p>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <div class="project-content">
+              <div class="project-type">Feature Film</div>
+              <h3>Crimson Harvest</h3>
+              <p>
+                A Southern Gothic romantic thriller shaped by love, manipulation, legacy, and the pressure of what people hide.
+              </p>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-content">
+              <div class="project-type">Television Concept</div>
+              <h3>Prestige Drama</h3>
+              <p>
+                Character-driven storytelling built for long-form tension, emotional reversals, and a world that unfolds slowly.
+              </p>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-content">
+              <div class="project-type">Original IP</div>
+              <h3>Future Worlds</h3>
+              <p>
+                New stories in active development with room for visual ambition, layered relationships, and cinematic scale.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="container section-inner">
+        <div class="section-top">
+          <div>
+            <div class="section-kicker">Approach</div>
+            <h2 class="section-title">Creative development with structure.</h2>
+          </div>
+
+          <p class="section-copy">
+            Good taste isn’t enough. A production company also needs process. Icarus Filmworks approaches development with a clear shape:
+            concept, world, character, tone, visual language, and execution.
+          </p>
+        </div>
+
+        <div class="services">
+          <div class="service">
+            <span class="service-number">01</span>
+            <h4>Story Development</h4>
+            <p>
+              Building concept, theme, structure, and emotional spine from the ground up.
+            </p>
+          </div>
+
+          <div class="service">
+            <span class="service-number">02</span>
+            <h4>Visual Identity</h4>
+            <p>
+              Defining the texture, mood, and cinematic language that makes a project feel distinct.
+            </p>
+          </div>
+
+          <div class="service">
+            <span class="service-number">03</span>
+            <h4>Pitch Materials</h4>
+            <p>
+              Lookbooks, one-sheets, decks, and presentation tools that make the idea tangible.
+            </p>
+          </div>
+
+          <div class="service">
+            <span class="service-number">04</span>
+            <h4>Production Strategy</h4>
+            <p>
+              Turning creative vision into something practical enough to package, fund, and produce.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container section-inner">
+        <div class="section-top">
+          <div>
+            <div class="section-kicker">Contact</div>
+            <h2 class="section-title">Let’s make something worth watching.</h2>
+          </div>
+
+          <p class="section-copy">
+            For creative partnerships, development conversations, packaging opportunities, or project inquiries,
+            reach out directly. This brand is built for collaboration with people who care about story and execution.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-panel">
+            <h3>Start the conversation.</h3>
+            <p>
+              Icarus Filmworks is open to discussing scripted film and television projects,
+              proof-of-concept development, pitch packaging, and original IP strategy.
+            </p>
+            <a href="mailto:hello@icarusfilmworks.com" class="button secondary">hello@icarusfilmworks.com</a>
+          </div>
+
+          <div class="contact-panel">
+            <div class="contact-links">
+              <div class="contact-link">
+                <span>Email</span>
+                hello@icarusfilmworks.com
+              </div>
+              <div class="contact-link">
+                <span>Instagram</span>
+                @icarusfilmworks
+              </div>
+              <div class="contact-link">
+                <span>Focus</span>
+                Film, television, development, pitch materials
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>Icarus Filmworks © 2026</div>
+      <div>Film • Television • Original Stories</div>
+    </div>
+  </footer>
 
 </body>
 </html>
