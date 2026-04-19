@@ -3,124 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chairman Worldwide</title>
+<title>Chairman Media Worldwide</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root{
+  --blue:#4da6ff;
+  --dark:#05070d;
+  --text:#ffffff;
+  --muted:#b0c4de;
+  --line:rgba(255,255,255,0.08);
 }
 
-body {
-  background: #0A0A0A;
-  color: #FFFFFF;
-  font-family: 'Inter', sans-serif;
+body{
+  margin:0;
+  font-family:'Inter', sans-serif;
+  background: radial-gradient(circle at top, #0b1d3a, #05070d 70%);
+  color:var(--text);
 }
 
 /* NAV */
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 30px 60px;
-  font-size: 14px;
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  border-bottom:1px solid var(--line);
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 30px;
-  opacity: 0.7;
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:600;
 }
 
-nav a:hover {
-  opacity: 1;
+.logo img{
+  width:40px;
+}
+
+nav a{
+  margin-left:20px;
+  color:#aaa;
+  text-decoration:none;
+}
+
+nav a:hover{
+  color:white;
 }
 
 /* HERO */
-.hero {
-  padding: 120px 60px;
+.hero{
+  text-align:center;
+  padding:140px 20px 120px;
+  background:
+    radial-gradient(circle at center, rgba(77,166,255,0.3), transparent 60%);
 }
 
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 72px;
-  line-height: 0.95;
-  letter-spacing: -1px;
+.hero h1{
+  font-family:'Playfair Display', serif;
+  font-size:56px;
+  line-height:1.2;
+  margin:0;
 }
 
-.hero p {
-  margin-top: 30px;
-  font-size: 18px;
-  opacity: 0.7;
+.hero p{
+  margin-top:20px;
+  color:var(--muted);
+  font-size:18px;
 }
 
-/* SUB BRANDS */
-.brands {
-  padding: 120px 60px;
+/* DIVISIONS */
+.section{
+  padding:80px 40px;
+  border-top:1px solid var(--line);
 }
 
-.brand {
-  font-size: 28px;
-  margin-bottom: 20px;
-  opacity: 0.8;
+.row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:40px 0;
+  border-bottom:1px solid var(--line);
 }
 
-.brand:hover {
-  opacity: 1;
+.row:hover{
+  transform:translateX(10px);
+  transition:.3s;
 }
 
-/* STATEMENT */
-.statement {
-  padding: 120px 60px;
-  font-family: 'Playfair Display', serif;
-  font-size: 36px;
-  line-height: 1.2;
-  max-width: 700px;
+.left h2{
+  font-family:'Playfair Display', serif;
+  font-size:32px;
+  margin:0;
+}
+
+.left span{
+  color:var(--blue);
+  font-size:14px;
+}
+
+.right{
+  max-width:400px;
+  color:#ccc;
 }
 
 /* FOOTER */
-footer {
-  padding: 60px;
-  font-size: 14px;
-  opacity: 0.5;
+footer{
+  text-align:center;
+  padding:40px;
+  color:#888;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero h1{font-size:36px;}
+  .row{
+    flex-direction:column;
+    align-items:flex-start;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
-  <div>CHAIRMAN WORLDWIDE</div>
+  <div class="logo">
+    <img src="logo.png">
+    CHAIRMAN MEDIA
+  </div>
+
   <div>
-    <a href="#">Work</a>
+    <a href="#">Home</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <h1>
-    CHAIRMAN<br>
-    WORLDWIDE
+    A modern media company.<br>
+    Built for a connected world.
   </h1>
-  <p>Media. Film. Culture.</p>
+
+  <p>
+    Developing brands, stories, and platforms<br>
+    at the intersection of global culture and entertainment.
+  </p>
 </section>
 
-<section class="brands">
-  <div class="brand">Icarus Filmworks</div>
-  <div class="brand">Frequency Black</div>
-  <div class="brand">Fandamonium</div>
-</section>
+<!-- DIVISIONS -->
+<section class="section">
 
-<section class="statement">
-  We build platforms, tell stories, and move culture.
+  <div class="row">
+    <div class="left">
+      <h2>Frequency Black</h2>
+      <span>Culture • Music • Politics</span>
+    </div>
+    <div class="right">
+      A digital media platform covering the connection between music, identity, and influence.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="left">
+      <h2>Icarus Filmworks</h2>
+      <span>Film • TV • Development</span>
+    </div>
+    <div class="right">
+      A creative production banner developing stories and films with cinematic vision.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="left">
+      <h2>Fandamonium</h2>
+      <span>Fan-Driven • Interactive • Platform</span>
+    </div>
+    <div class="right">
+      A platform where music fans engage, compete, and discover emerging talent.
+    </div>
+  </div>
+
 </section>
 
 <footer>
-  © Chairman Worldwide
+  Chairman Media Worldwide © 2026
 </footer>
 
 </body>
