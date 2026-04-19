@@ -19,15 +19,51 @@
 body{
   margin:0;
   font-family:'Inter', sans-serif;
-  background: radial-gradient(circle at top, #0b1d3a, #05070d 70%);
+  background:#05070d;
   color:var(--text);
+  overflow-x:hidden;
+}
+
+/* ===== BACKGROUND (CINEMATIC EARTH GLOW) ===== */
+.hero{
+  position:relative;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* Glow horizon */
+.hero::before{
+  content:"";
+  position:absolute;
+  bottom:-200px;
+  width:120%;
+  height:400px;
+  background:radial-gradient(circle at center, rgba(77,166,255,0.5), transparent 70%);
+  filter:blur(40px);
+}
+
+/* Star field */
+.hero::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:url('https://www.transparenttextures.com/patterns/stardust.png');
+  opacity:0.2;
 }
 
 /* NAV */
 nav{
+  position:absolute;
+  top:0;
+  width:100%;
   display:flex;
   justify-content:space-between;
-  align-items:center;
   padding:20px 40px;
   border-bottom:1px solid var(--line);
 }
@@ -36,7 +72,6 @@ nav{
   display:flex;
   align-items:center;
   gap:10px;
-  font-weight:600;
 }
 
 .logo img{
@@ -53,44 +88,57 @@ nav a:hover{
   color:white;
 }
 
-/* HERO */
-.hero{
-  text-align:center;
-  padding:140px 20px 120px;
-  background:
-    radial-gradient(circle at center, rgba(77,166,255,0.3), transparent 60%);
-}
-
+/* HERO TEXT */
 .hero h1{
   font-family:'Playfair Display', serif;
-  font-size:56px;
+  font-size:60px;
   line-height:1.2;
-  margin:0;
+  z-index:2;
+  animation:fadeUp 1.5s ease forwards;
 }
 
 .hero p{
   margin-top:20px;
   color:var(--muted);
   font-size:18px;
+  z-index:2;
+  animation:fadeUp 2s ease forwards;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 /* DIVISIONS */
 .section{
-  padding:80px 40px;
-  border-top:1px solid var(--line);
+  padding:100px 40px;
 }
 
 .row{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  padding:40px 0;
-  border-bottom:1px solid var(--line);
+  padding:50px 0;
+  border-top:1px solid var(--line);
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .8s ease;
+}
+
+.row.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
 .row:hover{
   transform:translateX(10px);
-  transition:.3s;
 }
 
 .left h2{
@@ -113,15 +161,14 @@ nav a:hover{
 footer{
   text-align:center;
   padding:40px;
-  color:#888;
+  color:#777;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-  .hero h1{font-size:36px;}
+  .hero h1{font-size:38px;}
   .row{
     flex-direction:column;
-    align-items:flex-start;
   }
 }
 </style>
@@ -129,22 +176,22 @@ footer{
 
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="logo">
-    <img src="logo.png">
-    CHAIRMAN MEDIA
-  </div>
-
-  <div>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </div>
-</nav>
-
 <!-- HERO -->
 <section class="hero">
+
+  <nav>
+    <div class="logo">
+      <img src="logo.png">
+      CHAIRMAN MEDIA
+    </div>
+
+    <div>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
   <h1>
     A modern media company.<br>
     Built for a connected world.
@@ -154,6 +201,7 @@ footer{
     Developing brands, stories, and platforms<br>
     at the intersection of global culture and entertainment.
   </p>
+
 </section>
 
 <!-- DIVISIONS -->
@@ -194,6 +242,21 @@ footer{
 <footer>
   Chairman Media Worldwide © 2026
 </footer>
+
+<script>
+// Scroll animation
+const rows = document.querySelectorAll('.row');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+});
+
+rows.forEach(row => observer.observe(row));
+</script>
 
 </body>
 </html>
