@@ -1,1009 +1,1889 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Frequency Black is an independent digital media company covering power, culture, business, technology, and the stories shaping Black life." />
-  <meta name="theme-color" content="#050505" />
-  <title>Frequency Black — Power. Culture. Perspective.</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
 
-  <style>
-    :root{
-      --black:#050505;
-      --black-2:#0a0a0a;
-      --panel:#0f0f10;
-      --panel-2:#151516;
-      --white:#f6f6f6;
-      --muted:#a8a8ab;
-      --line:#2a2a2d;
-      --blue:#0878e9;
-      --blue-bright:#1492ff;
-      --max:1240px;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:var(--black);
-      color:var(--white);
-      font-family:"Raleway", Arial, sans-serif;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
+  <meta name="description" content="Frequency Black is an independent digital media company covering politics and power, environmental issues, Black America and culture, real estate, and the stories shaping Black life." />
 
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%}
-    button,input{font:inherit}
-    .wrap{width:min(var(--max), calc(100% - 40px));margin:0 auto}
+  <meta name="theme-color" content="#050505" />
 
-    /* TOP BAR */
-    .topbar{
-      border-bottom:1px solid var(--line);
-      background:#030303;
-    }
-    .topbar-inner{
-      min-height:38px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      font-size:10px;
-      font-weight:700;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      color:#b8b8ba;
-    }
-    .topbar-dot{
-      width:6px;height:6px;border-radius:999px;background:var(--blue-bright);
-      display:inline-block;margin-right:8px;box-shadow:0 0 14px rgba(20,146,255,.75)
-    }
+  <title>Frequency Black — Power. Community. Environment. Property.</title>
 
-    /* HEADER */
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:40;
-      background:rgba(5,5,5,.94);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--line);
-    }
-    .header-inner{
-      min-height:88px;
-      display:grid;
-      grid-template-columns:1fr auto 1fr;
-      align-items:center;
-      gap:30px;
-    }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    .menu-btn{
-      justify-self:start;
-      background:transparent;
-      color:var(--white);
-      border:0;
-      padding:10px 0;
-      cursor:pointer;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:1.8px;
-      text-transform:uppercase;
-    }
-    .menu-lines{width:22px;display:grid;gap:5px}
-    .menu-lines span{height:1px;background:#fff;width:100%;display:block}
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    .brand{
-      text-align:center;
-      font-size:26px;
-      font-weight:800;
-      letter-spacing:5px;
-      white-space:nowrap;
-      text-transform:uppercase;
-    }
-    .brand span{color:#8f8f93}
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    .header-actions{
-      justify-self:end;
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
-    .text-link{
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:1.5px;
-      text-transform:uppercase;
-      color:#c7c7c9;
-    }
-    .button{
-      border:1px solid var(--line);
-      background:#111;
-      color:#fff;
-      padding:11px 16px;
-      border-radius:4px;
-      cursor:pointer;
-      font-size:10px;
-      font-weight:800;
-      letter-spacing:1.6px;
-      text-transform:uppercase;
-      transition:.2s ease;
-    }
-    .button:hover{border-color:#525257;transform:translateY(-1px)}
-    .button.blue{
-      background:var(--blue);
-      border-color:var(--blue);
-    }
-    .button.blue:hover{background:var(--blue-bright);border-color:var(--blue-bright)}
+  <style>
 
-    /* NAV */
-    .nav-row{
-      border-bottom:1px solid var(--line);
-      background:#070707;
-    }
-    .nav{
-      min-height:46px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:34px;
-      overflow:auto;
-      scrollbar-width:none;
-    }
-    .nav::-webkit-scrollbar{display:none}
-    .nav a{
-      flex:0 0 auto;
-      font-size:10px;
-      font-weight:800;
-      letter-spacing:1.8px;
-      text-transform:uppercase;
-      color:#a8a8ab;
-      transition:.2s ease;
-    }
-    .nav a:hover,.nav a.active{color:#fff}
-    .nav a.active::after{
-      content:"";
-      display:block;
-      height:2px;
-      background:var(--blue);
-      margin-top:8px;
-    }
+    :root{
 
-    /* HERO */
-    .hero{
-      padding:64px 0 56px;
-      border-bottom:1px solid var(--line);
-    }
-    .eyebrow{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom:18px;
-      font-size:10px;
-      font-weight:800;
-      letter-spacing:2.2px;
-      text-transform:uppercase;
-      color:#c7c7c9;
-    }
-    .eyebrow:before{
-      content:"";
-      width:30px;height:2px;background:var(--blue);
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns:minmax(0, 1.55fr) minmax(300px, .75fr);
-      gap:40px;
-      align-items:end;
-    }
-    .hero h1{
-      margin:0;
-      max-width:900px;
-      font-size:clamp(48px, 7vw, 104px);
-      line-height:.94;
-      letter-spacing:-3.5px;
-      font-weight:900;
-      text-transform:uppercase;
-    }
-    .hero h1 .tone{color:#8d8d91}
-    .hero-side{
-      border-left:1px solid var(--line);
-      padding-left:28px;
-      padding-bottom:8px;
-    }
-    .hero-side p{
-      margin:0 0 24px;
-      color:#b8b8bc;
-      font-size:15px;
-      line-height:1.8;
-    }
-    .hero-side strong{color:#fff}
+      --black:#050505;
 
-    /* FEATURE GRID */
-    .features{
-      padding:34px 0 70px;
-      border-bottom:1px solid var(--line);
-    }
-    .feature-grid{
-      display:grid;
-      grid-template-columns:2fr 1fr 1fr;
-      gap:1px;
-      background:var(--line);
-      border:1px solid var(--line);
-    }
-    .story-card{
-      min-height:390px;
-      padding:28px;
-      background:var(--panel);
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      position:relative;
-      overflow:hidden;
-      isolation:isolate;
-    }
-    .story-card:before{
-      content:"";
-      position:absolute;
-      inset:0;
-      z-index:-2;
-      background:
-        radial-gradient(circle at 78% 20%, rgba(8,120,233,.3), transparent 34%),
-        linear-gradient(150deg,#171719 0%,#101011 45%,#080808 100%);
-    }
-    .story-card:after{
-      content:"";
-      position:absolute;
-      left:0;right:0;bottom:0;height:55%;
-      background:linear-gradient(to top, rgba(0,0,0,.9), transparent);
-      z-index:-1;
-    }
-    .story-card.large{min-height:520px}
-    .tag{
-      display:inline-block;
-      width:max-content;
-      margin-bottom:14px;
-      padding:7px 9px 6px;
-      border:1px solid #3b3b3f;
-      border-bottom:2px solid var(--blue);
-      border-radius:3px;
-      font-size:9px;
-      font-weight:900;
-      letter-spacing:1.4px;
-      text-transform:uppercase;
-      background:rgba(0,0,0,.3);
-    }
-    .story-card h2,.story-card h3{
-      margin:0 0 14px;
-      text-transform:uppercase;
-      font-weight:900;
-    }
-    .story-card h2{font-size:clamp(30px,4.2vw,58px);line-height:1;letter-spacing:-1.5px}
-    .story-card h3{font-size:23px;line-height:1.05}
-    .story-card p{
-      max-width:670px;
-      margin:0;
-      color:#b9b9bc;
-      line-height:1.65;
-      font-size:13px;
-    }
-    .story-meta{
-      margin-top:20px;
-      color:#77777c;
-      font-size:9px;
-      letter-spacing:1.4px;
-      font-weight:700;
-      text-transform:uppercase;
-    }
+      --black-2:#0a0a0a;
 
-    /* SECTION */
-    .section{
-      padding:72px 0;
-      border-bottom:1px solid var(--line);
-    }
-    .section-head{
-      margin-bottom:30px;
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:25px;
-    }
-    .section-title{
-      margin:0;
-      font-size:28px;
-      line-height:1;
-      font-weight:900;
-      letter-spacing:2px;
-      text-transform:uppercase;
-    }
-    .section-title span{color:#8d8d91}
-    .section-kicker{
-      display:block;
-      margin-bottom:10px;
-      color:var(--blue-bright);
-      font-size:9px;
-      font-weight:900;
-      letter-spacing:2.2px;
-      text-transform:uppercase;
-    }
-    .view-all{
-      font-size:10px;
-      font-weight:800;
-      letter-spacing:1.5px;
-      color:#a8a8aa;
-      text-transform:uppercase;
-    }
-    .view-all:hover{color:#fff}
+      --panel:#0f0f10;
 
-    .article-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:28px;
-    }
-    .article-card{
-      border-top:1px solid var(--line);
-      padding-top:18px;
-    }
-    .thumb{
-      aspect-ratio:16/10;
-      background:
-        linear-gradient(135deg, rgba(8,120,233,.18), transparent 40%),
-        linear-gradient(145deg,#19191b,#0d0d0e);
-      border:1px solid #202023;
-      margin-bottom:18px;
-      position:relative;
-      overflow:hidden;
-    }
-    .thumb:after{
-      content:"FB";
-      position:absolute;
-      right:14px;
-      bottom:9px;
-      font-size:40px;
-      font-weight:900;
-      letter-spacing:-3px;
-      color:rgba(255,255,255,.06);
-    }
-    .article-card .category{
-      margin-bottom:9px;
-      font-size:9px;
-      font-weight:900;
-      letter-spacing:1.5px;
-      color:var(--blue-bright);
-      text-transform:uppercase;
-    }
-    .article-card h3{
-      margin:0 0 10px;
-      font-size:20px;
-      line-height:1.25;
-      font-weight:800;
-      text-transform:uppercase;
-    }
-    .article-card p{
-      margin:0;
-      color:#9b9b9e;
-      font-size:13px;
-      line-height:1.65;
-    }
-    .article-card .meta{
-      margin-top:16px;
-      color:#646469;
-      font-size:9px;
-      font-weight:700;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-    }
+      --panel-2:#151516;
 
-    /* PULSE */
-    .pulse{
-      padding:70px 0;
-      background:#080808;
-      border-bottom:1px solid var(--line);
-    }
-    .pulse-grid{
-      display:grid;
-      grid-template-columns:.85fr 1.15fr;
-      gap:60px;
-      align-items:center;
-    }
-    .pulse-mark{
-      width:min(100%,430px);
-      aspect-ratio:1.4/1;
-      border:1px solid #39393c;
-      border-radius:8px;
-      display:grid;
-      place-items:center;
-      position:relative;
-      overflow:hidden;
-      background:linear-gradient(145deg,#101011,#060606);
-    }
-    .pulse-mark:before{
-      content:"";
-      position:absolute;
-      left:0;right:0;bottom:0;
-      height:4px;
-      background:linear-gradient(90deg,#fff 0 52%,var(--blue) 52% 100%);
-    }
-    .pulse-mark span{
-      font-weight:900;
-      font-size:44px;
-      line-height:.9;
-      text-align:center;
-      text-transform:uppercase;
-      letter-spacing:1px;
-    }
-    .pulse-copy h2{
-      margin:0 0 18px;
-      font-size:clamp(38px,5.5vw,70px);
-      line-height:.95;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:-2px;
-    }
-    .pulse-copy h2 span{color:#8c8c90}
-    .pulse-copy p{
-      max-width:700px;
-      color:#adadb0;
-      font-size:15px;
-      line-height:1.8;
-      margin:0 0 24px;
-    }
+      --white:#f6f6f6;
 
-    /* NEWSLETTER */
-    .newsletter{
-      padding:76px 0;
-      background:
-        radial-gradient(circle at 80% 50%,rgba(8,120,233,.16),transparent 30%),
-        #050505;
-      border-bottom:1px solid var(--line);
-    }
-    .newsletter-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:50px;
-      align-items:center;
-    }
-    .newsletter h2{
-      margin:0 0 14px;
-      font-size:clamp(38px,5vw,64px);
-      line-height:1;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:-1.7px;
-    }
-    .newsletter p{
-      margin:0;
-      color:#a7a7aa;
-      max-width:620px;
-      line-height:1.75;
-      font-size:14px;
-    }
-    .signup{
-      display:flex;
-      gap:10px;
-      padding:8px;
-      border:1px solid #333338;
-      background:#0c0c0d;
-      border-radius:5px;
-    }
-    .signup input{
-      min-width:0;
-      flex:1;
-      color:#fff;
-      background:transparent;
-      border:0;
-      outline:0;
-      padding:10px 12px;
-      font-size:13px;
-    }
-    .signup input::placeholder{color:#69696d}
+      --muted:#a8a8ab;
 
-    /* FOOTER */
-    footer{padding:52px 0 30px;background:#030303}
-    .footer-top{
-      display:grid;
-      grid-template-columns:1.3fr repeat(3,1fr);
-      gap:40px;
-      padding-bottom:42px;
-      border-bottom:1px solid var(--line);
-    }
-    .footer-brand{
-      font-size:24px;
-      font-weight:900;
-      letter-spacing:4px;
-      text-transform:uppercase;
-    }
-    .footer-brand span{color:#89898d}
-    .footer-brand small{
-      display:block;
-      margin-top:10px;
-      color:#6f6f74;
-      font-size:9px;
-      font-weight:700;
-      letter-spacing:2.5px;
-    }
-    .footer-col h4{
-      margin:0 0 16px;
-      font-size:9px;
-      letter-spacing:1.8px;
-      text-transform:uppercase;
-      color:#fff;
-    }
-    .footer-col a{
-      display:block;
-      margin:9px 0;
-      color:#86868a;
-      font-size:12px;
-    }
-    .footer-col a:hover{color:#fff}
-    .footer-bottom{
-      padding-top:24px;
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      color:#5f5f64;
-      font-size:9px;
-      letter-spacing:1.1px;
-      text-transform:uppercase;
-    }
+      --line:#2a2a2d;
 
-    /* MOBILE MENU */
-    .mobile-menu{
-      position:fixed;
-      inset:0;
-      z-index:60;
-      background:rgba(0,0,0,.97);
-      padding:28px;
-      display:none;
-    }
-    .mobile-menu.open{display:block}
-    .mobile-menu-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding-bottom:25px;
-      border-bottom:1px solid var(--line);
-    }
-    .close-btn{
-      border:1px solid var(--line);
-      background:transparent;
-      color:#fff;
-      width:38px;height:38px;border-radius:4px;cursor:pointer;
-    }
-    .mobile-links{
-      display:grid;
-      padding-top:35px;
-    }
-    .mobile-links a{
-      padding:16px 0;
-      border-bottom:1px solid #161618;
-      font-weight:900;
-      font-size:28px;
-      letter-spacing:-.5px;
-      text-transform:uppercase;
-    }
+      --blue:#0878e9;
 
-    @media (max-width: 980px){
-      .header-inner{grid-template-columns:auto 1fr auto}
-      .brand{font-size:20px;letter-spacing:3px}
-      .text-link{display:none}
-      .hero-grid,.pulse-grid,.newsletter-grid{grid-template-columns:1fr}
-      .hero-side{border-left:0;border-top:1px solid var(--line);padding:24px 0 0}
-      .feature-grid{grid-template-columns:1fr 1fr}
-      .story-card.large{grid-column:1/-1}
-      .article-grid{grid-template-columns:1fr 1fr}
-      .footer-top{grid-template-columns:1fr 1fr}
-    }
+      --blue-bright:#1492ff;
 
-    @media (max-width: 680px){
-      .wrap{width:min(100% - 28px,var(--max))}
-      .topbar-inner{justify-content:center}
-      .topbar-inner > div:last-child{display:none}
-      .header-inner{min-height:72px;gap:12px}
-      .brand{font-size:16px;letter-spacing:2px}
-      .menu-btn{font-size:0}
-      .button{padding:10px 11px}
-      .nav{justify-content:flex-start;padding-left:2px;gap:24px}
-      .hero{padding:48px 0 42px}
-      .hero h1{letter-spacing:-2px}
-      .feature-grid{grid-template-columns:1fr}
-      .story-card.large{grid-column:auto;min-height:450px}
-      .story-card{min-height:340px}
-      .article-grid{grid-template-columns:1fr}
-      .section{padding:56px 0}
-      .section-head{align-items:flex-start}
-      .section-title{font-size:24px}
-      .pulse{padding:56px 0}
-      .newsletter{padding:58px 0}
-      .signup{flex-direction:column}
-      .signup .button{width:100%}
-      .footer-top{grid-template-columns:1fr}
-      .footer-bottom{flex-direction:column}
-      .header-actions .button{font-size:0}
-      .header-actions .button:after{content:"Join";font-size:9px}
-    }
-  </style>
+      --max:1240px;
+
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+
+      margin:0;
+
+      background:var(--black);
+
+      color:var(--white);
+
+      font-family:"Raleway", Arial, sans-serif;
+
+      -webkit-font-smoothing:antialiased;
+
+      text-rendering:optimizeLegibility;
+
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    img{display:block;max-width:100%}
+
+    button,input{font:inherit}
+
+    .wrap{width:min(var(--max), calc(100% - 40px));margin:0 auto}
+
+    /* TOP BAR */
+
+    .topbar{
+
+      border-bottom:1px solid var(--line);
+
+      background:#030303;
+
+    }
+
+    .topbar-inner{
+
+      min-height:38px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:20px;
+
+      font-size:10px;
+
+      font-weight:700;
+
+      letter-spacing:2px;
+
+      text-transform:uppercase;
+
+      color:#b8b8ba;
+
+    }
+
+    .topbar-dot{
+
+      width:6px;height:6px;border-radius:999px;background:var(--blue-bright);
+
+      display:inline-block;margin-right:8px;box-shadow:0 0 14px rgba(20,146,255,.75)
+
+    }
+
+    /* HEADER */
+
+    .site-header{
+
+      position:sticky;
+
+      top:0;
+
+      z-index:40;
+
+      background:rgba(5,5,5,.94);
+
+      backdrop-filter:blur(14px);
+
+      border-bottom:1px solid var(--line);
+
+    }
+
+    .header-inner{
+
+      min-height:88px;
+
+      display:grid;
+
+      grid-template-columns:1fr auto 1fr;
+
+      align-items:center;
+
+      gap:30px;
+
+    }
+
+    .menu-btn{
+
+      justify-self:start;
+
+      background:transparent;
+
+      color:var(--white);
+
+      border:0;
+
+      padding:10px 0;
+
+      cursor:pointer;
+
+      display:flex;
+
+      gap:10px;
+
+      align-items:center;
+
+      font-size:11px;
+
+      font-weight:800;
+
+      letter-spacing:1.8px;
+
+      text-transform:uppercase;
+
+    }
+
+    .menu-lines{width:22px;display:grid;gap:5px}
+
+    .menu-lines span{height:1px;background:#fff;width:100%;display:block}
+
+    .brand{
+
+      text-align:center;
+
+      font-size:26px;
+
+      font-weight:800;
+
+      letter-spacing:5px;
+
+      white-space:nowrap;
+
+      text-transform:uppercase;
+
+    }
+
+    .brand span{color:#8f8f93}
+
+    .header-actions{
+
+      justify-self:end;
+
+      display:flex;
+
+      gap:12px;
+
+      align-items:center;
+
+    }
+
+    .text-link{
+
+      font-size:11px;
+
+      font-weight:800;
+
+      letter-spacing:1.5px;
+
+      text-transform:uppercase;
+
+      color:#c7c7c9;
+
+    }
+
+    .button{
+
+      border:1px solid var(--line);
+
+      background:#111;
+
+      color:#fff;
+
+      padding:11px 16px;
+
+      border-radius:4px;
+
+      cursor:pointer;
+
+      font-size:10px;
+
+      font-weight:800;
+
+      letter-spacing:1.6px;
+
+      text-transform:uppercase;
+
+      transition:.2s ease;
+
+    }
+
+    .button:hover{border-color:#525257;transform:translateY(-1px)}
+
+    .button.blue{
+
+      background:var(--blue);
+
+      border-color:var(--blue);
+
+    }
+
+    .button.blue:hover{background:var(--blue-bright);border-color:var(--blue-bright)}
+
+    /* NAV */
+
+    .nav-row{
+
+      border-bottom:1px solid var(--line);
+
+      background:#070707;
+
+    }
+
+    .nav{
+
+      min-height:46px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      gap:34px;
+
+      overflow:auto;
+
+      scrollbar-width:none;
+
+    }
+
+    .nav::-webkit-scrollbar{display:none}
+
+    .nav a{
+
+      flex:0 0 auto;
+
+      font-size:10px;
+
+      font-weight:800;
+
+      letter-spacing:1.8px;
+
+      text-transform:uppercase;
+
+      color:#a8a8ab;
+
+      transition:.2s ease;
+
+    }
+
+    .nav a:hover,.nav a.active{color:#fff}
+
+    .nav a.active::after{
+
+      content:"";
+
+      display:block;
+
+      height:2px;
+
+      background:var(--blue);
+
+      margin-top:8px;
+
+    }
+
+    /* HERO */
+
+    .hero{
+
+      padding:64px 0 56px;
+
+      border-bottom:1px solid var(--line);
+
+    }
+
+    .eyebrow{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:10px;
+
+      margin-bottom:18px;
+
+      font-size:10px;
+
+      font-weight:800;
+
+      letter-spacing:2.2px;
+
+      text-transform:uppercase;
+
+      color:#c7c7c9;
+
+    }
+
+    .eyebrow:before{
+
+      content:"";
+
+      width:30px;height:2px;background:var(--blue);
+
+    }
+
+    .hero-grid{
+
+      display:grid;
+
+      grid-template-columns:minmax(0, 1.55fr) minmax(300px, .75fr);
+
+      gap:40px;
+
+      align-items:end;
+
+    }
+
+    .hero h1{
+
+      margin:0;
+
+      max-width:900px;
+
+      font-size:clamp(48px, 7vw, 104px);
+
+      line-height:.94;
+
+      letter-spacing:-3.5px;
+
+      font-weight:900;
+
+      text-transform:uppercase;
+
+    }
+
+    .hero h1 .tone{color:#8d8d91}
+
+    .hero-side{
+
+      border-left:1px solid var(--line);
+
+      padding-left:28px;
+
+      padding-bottom:8px;
+
+    }
+
+    .hero-side p{
+
+      margin:0 0 24px;
+
+      color:#b8b8bc;
+
+      font-size:15px;
+
+      line-height:1.8;
+
+    }
+
+    .hero-side strong{color:#fff}
+
+    /* FEATURE GRID */
+
+    .features{
+
+      padding:34px 0 70px;
+
+      border-bottom:1px solid var(--line);
+
+    }
+
+    .feature-grid{
+
+      display:grid;
+
+      grid-template-columns:2fr 1fr 1fr;
+
+      gap:1px;
+
+      background:var(--line);
+
+      border:1px solid var(--line);
+
+    }
+
+    .story-card{
+
+      min-height:390px;
+
+      padding:28px;
+
+      background:var(--panel);
+
+      display:flex;
+
+      flex-direction:column;
+
+      justify-content:flex-end;
+
+      position:relative;
+
+      overflow:hidden;
+
+      isolation:isolate;
+
+    }
+
+    .story-card:before{
+
+      content:"";
+
+      position:absolute;
+
+      inset:0;
+
+      z-index:-2;
+
+      background:
+
+        radial-gradient(circle at 78% 20%, rgba(8,120,233,.3), transparent 34%),
+
+        linear-gradient(150deg,#171719 0%,#101011 45%,#080808 100%);
+
+    }
+
+    .story-card:after{
+
+      content:"";
+
+      position:absolute;
+
+      left:0;right:0;bottom:0;height:55%;
+
+      background:linear-gradient(to top, rgba(0,0,0,.9), transparent);
+
+      z-index:-1;
+
+    }
+
+    .story-card.large{min-height:520px}
+
+    .tag{
+
+      display:inline-block;
+
+      width:max-content;
+
+      margin-bottom:14px;
+
+      padding:7px 9px 6px;
+
+      border:1px solid #3b3b3f;
+
+      border-bottom:2px solid var(--blue);
+
+      border-radius:3px;
+
+      font-size:9px;
+
+      font-weight:900;
+
+      letter-spacing:1.4px;
+
+      text-transform:uppercase;
+
+      background:rgba(0,0,0,.3);
+
+    }
+
+    .story-card h2,.story-card h3{
+
+      margin:0 0 14px;
+
+      text-transform:uppercase;
+
+      font-weight:900;
+
+    }
+
+    .story-card h2{font-size:clamp(30px,4.2vw,58px);line-height:1;letter-spacing:-1.5px}
+
+    .story-card h3{font-size:23px;line-height:1.05}
+
+    .story-card p{
+
+      max-width:670px;
+
+      margin:0;
+
+      color:#b9b9bc;
+
+      line-height:1.65;
+
+      font-size:13px;
+
+    }
+
+    .story-meta{
+
+      margin-top:20px;
+
+      color:#77777c;
+
+      font-size:9px;
+
+      letter-spacing:1.4px;
+
+      font-weight:700;
+
+      text-transform:uppercase;
+
+    }
+
+    /* SECTION */
+
+    .section{
+
+      padding:72px 0;
+
+      border-bottom:1px solid var(--line);
+
+    }
+
+    .section-head{
+
+      margin-bottom:30px;
+
+      display:flex;
+
+      justify-content:space-between;
+
+      align-items:end;
+
+      gap:25px;
+
+    }
+
+    .section-title{
+
+      margin:0;
+
+      font-size:28px;
+
+      line-height:1;
+
+      font-weight:900;
+
+      letter-spacing:2px;
+
+      text-transform:uppercase;
+
+    }
+
+    .section-title span{color:#8d8d91}
+
+    .section-kicker{
+
+      display:block;
+
+      margin-bottom:10px;
+
+      color:var(--blue-bright);
+
+      font-size:9px;
+
+      font-weight:900;
+
+      letter-spacing:2.2px;
+
+      text-transform:uppercase;
+
+    }
+
+    .view-all{
+
+      font-size:10px;
+
+      font-weight:800;
+
+      letter-spacing:1.5px;
+
+      color:#a8a8aa;
+
+      text-transform:uppercase;
+
+    }
+
+    .view-all:hover{color:#fff}
+
+    .article-grid{
+
+      display:grid;
+
+      grid-template-columns:repeat(3,1fr);
+
+      gap:28px;
+
+    }
+
+    .article-card{
+
+      border-top:1px solid var(--line);
+
+      padding-top:18px;
+
+    }
+
+    .thumb{
+
+      aspect-ratio:16/10;
+
+      background:
+
+        linear-gradient(135deg, rgba(8,120,233,.18), transparent 40%),
+
+        linear-gradient(145deg,#19191b,#0d0d0e);
+
+      border:1px solid #202023;
+
+      margin-bottom:18px;
+
+      position:relative;
+
+      overflow:hidden;
+
+    }
+
+    .thumb:after{
+
+      content:"FB";
+
+      position:absolute;
+
+      right:14px;
+
+      bottom:9px;
+
+      font-size:40px;
+
+      font-weight:900;
+
+      letter-spacing:-3px;
+
+      color:rgba(255,255,255,.06);
+
+    }
+
+    .article-card .category{
+
+      margin-bottom:9px;
+
+      font-size:9px;
+
+      font-weight:900;
+
+      letter-spacing:1.5px;
+
+      color:var(--blue-bright);
+
+      text-transform:uppercase;
+
+    }
+
+    .article-card h3{
+
+      margin:0 0 10px;
+
+      font-size:20px;
+
+      line-height:1.25;
+
+      font-weight:800;
+
+      text-transform:uppercase;
+
+    }
+
+    .article-card p{
+
+      margin:0;
+
+      color:#9b9b9e;
+
+      font-size:13px;
+
+      line-height:1.65;
+
+    }
+
+    .article-card .meta{
+
+      margin-top:16px;
+
+      color:#646469;
+
+      font-size:9px;
+
+      font-weight:700;
+
+      letter-spacing:1.2px;
+
+      text-transform:uppercase;
+
+    }
+
+    /* PULSE */
+
+    .pulse{
+
+      padding:70px 0;
+
+      background:#080808;
+
+      border-bottom:1px solid var(--line);
+
+    }
+
+    .pulse-grid{
+
+      display:grid;
+
+      grid-template-columns:.85fr 1.15fr;
+
+      gap:60px;
+
+      align-items:center;
+
+    }
+
+    .pulse-mark{
+
+      width:min(100%,430px);
+
+      aspect-ratio:1.4/1;
+
+      border:1px solid #39393c;
+
+      border-radius:8px;
+
+      display:grid;
+
+      place-items:center;
+
+      position:relative;
+
+      overflow:hidden;
+
+      background:linear-gradient(145deg,#101011,#060606);
+
+    }
+
+    .pulse-mark:before{
+
+      content:"";
+
+      position:absolute;
+
+      left:0;right:0;bottom:0;
+
+      height:4px;
+
+      background:linear-gradient(90deg,#fff 0 52%,var(--blue) 52% 100%);
+
+    }
+
+    .pulse-mark span{
+
+      font-weight:900;
+
+      font-size:44px;
+
+      line-height:.9;
+
+      text-align:center;
+
+      text-transform:uppercase;
+
+      letter-spacing:1px;
+
+    }
+
+    .pulse-copy h2{
+
+      margin:0 0 18px;
+
+      font-size:clamp(38px,5.5vw,70px);
+
+      line-height:.95;
+
+      font-weight:900;
+
+      text-transform:uppercase;
+
+      letter-spacing:-2px;
+
+    }
+
+    .pulse-copy h2 span{color:#8c8c90}
+
+    .pulse-copy p{
+
+      max-width:700px;
+
+      color:#adadb0;
+
+      font-size:15px;
+
+      line-height:1.8;
+
+      margin:0 0 24px;
+
+    }
+
+    /* NEWSLETTER */
+
+    .newsletter{
+
+      padding:76px 0;
+
+      background:
+
+        radial-gradient(circle at 80% 50%,rgba(8,120,233,.16),transparent 30%),
+
+        #050505;
+
+      border-bottom:1px solid var(--line);
+
+    }
+
+    .newsletter-grid{
+
+      display:grid;
+
+      grid-template-columns:1.1fr .9fr;
+
+      gap:50px;
+
+      align-items:center;
+
+    }
+
+    .newsletter h2{
+
+      margin:0 0 14px;
+
+      font-size:clamp(38px,5vw,64px);
+
+      line-height:1;
+
+      font-weight:900;
+
+      text-transform:uppercase;
+
+      letter-spacing:-1.7px;
+
+    }
+
+    .newsletter p{
+
+      margin:0;
+
+      color:#a7a7aa;
+
+      max-width:620px;
+
+      line-height:1.75;
+
+      font-size:14px;
+
+    }
+
+    .signup{
+
+      display:flex;
+
+      gap:10px;
+
+      padding:8px;
+
+      border:1px solid #333338;
+
+      background:#0c0c0d;
+
+      border-radius:5px;
+
+    }
+
+    .signup input{
+
+      min-width:0;
+
+      flex:1;
+
+      color:#fff;
+
+      background:transparent;
+
+      border:0;
+
+      outline:0;
+
+      padding:10px 12px;
+
+      font-size:13px;
+
+    }
+
+    .signup input::placeholder{color:#69696d}
+
+    /* FOOTER */
+
+    footer{padding:52px 0 30px;background:#030303}
+
+    .footer-top{
+
+      display:grid;
+
+      grid-template-columns:1.3fr repeat(3,1fr);
+
+      gap:40px;
+
+      padding-bottom:42px;
+
+      border-bottom:1px solid var(--line);
+
+    }
+
+    .footer-brand{
+
+      font-size:24px;
+
+      font-weight:900;
+
+      letter-spacing:4px;
+
+      text-transform:uppercase;
+
+    }
+
+    .footer-brand span{color:#89898d}
+
+    .footer-brand small{
+
+      display:block;
+
+      margin-top:10px;
+
+      color:#6f6f74;
+
+      font-size:9px;
+
+      font-weight:700;
+
+      letter-spacing:2.5px;
+
+    }
+
+    .footer-col h4{
+
+      margin:0 0 16px;
+
+      font-size:9px;
+
+      letter-spacing:1.8px;
+
+      text-transform:uppercase;
+
+      color:#fff;
+
+    }
+
+    .footer-col a{
+
+      display:block;
+
+      margin:9px 0;
+
+      color:#86868a;
+
+      font-size:12px;
+
+    }
+
+    .footer-col a:hover{color:#fff}
+
+    .footer-bottom{
+
+      padding-top:24px;
+
+      display:flex;
+
+      justify-content:space-between;
+
+      gap:20px;
+
+      color:#5f5f64;
+
+      font-size:9px;
+
+      letter-spacing:1.1px;
+
+      text-transform:uppercase;
+
+    }
+
+    /* MOBILE MENU */
+
+    .mobile-menu{
+
+      position:fixed;
+
+      inset:0;
+
+      z-index:60;
+
+      background:rgba(0,0,0,.97);
+
+      padding:28px;
+
+      display:none;
+
+    }
+
+    .mobile-menu.open{display:block}
+
+    .mobile-menu-top{
+
+      display:flex;
+
+      justify-content:space-between;
+
+      align-items:center;
+
+      padding-bottom:25px;
+
+      border-bottom:1px solid var(--line);
+
+    }
+
+    .close-btn{
+
+      border:1px solid var(--line);
+
+      background:transparent;
+
+      color:#fff;
+
+      width:38px;height:38px;border-radius:4px;cursor:pointer;
+
+    }
+
+    .mobile-links{
+
+      display:grid;
+
+      padding-top:35px;
+
+    }
+
+    .mobile-links a{
+
+      padding:16px 0;
+
+      border-bottom:1px solid #161618;
+
+      font-weight:900;
+
+      font-size:28px;
+
+      letter-spacing:-.5px;
+
+      text-transform:uppercase;
+
+    }
+
+    @media (max-width: 980px){
+
+      .header-inner{grid-template-columns:auto 1fr auto}
+
+      .brand{font-size:20px;letter-spacing:3px}
+
+      .text-link{display:none}
+
+      .hero-grid,.pulse-grid,.newsletter-grid{grid-template-columns:1fr}
+
+      .hero-side{border-left:0;border-top:1px solid var(--line);padding:24px 0 0}
+
+      .feature-grid{grid-template-columns:1fr 1fr}
+
+      .story-card.large{grid-column:1/-1}
+
+      .article-grid{grid-template-columns:1fr 1fr}
+
+      .footer-top{grid-template-columns:1fr 1fr}
+
+    }
+
+    @media (max-width: 680px){
+
+      .wrap{width:min(100% - 28px,var(--max))}
+
+      .topbar-inner{justify-content:center}
+
+      .topbar-inner > div:last-child{display:none}
+
+      .header-inner{min-height:72px;gap:12px}
+
+      .brand{font-size:16px;letter-spacing:2px}
+
+      .menu-btn{font-size:0}
+
+      .button{padding:10px 11px}
+
+      .nav{justify-content:flex-start;padding-left:2px;gap:24px}
+
+      .hero{padding:48px 0 42px}
+
+      .hero h1{letter-spacing:-2px}
+
+      .feature-grid{grid-template-columns:1fr}
+
+      .story-card.large{grid-column:auto;min-height:450px}
+
+      .story-card{min-height:340px}
+
+      .article-grid{grid-template-columns:1fr}
+
+      .section{padding:56px 0}
+
+      .section-head{align-items:flex-start}
+
+      .section-title{font-size:24px}
+
+      .pulse{padding:56px 0}
+
+      .newsletter{padding:58px 0}
+
+      .signup{flex-direction:column}
+
+      .signup .button{width:100%}
+
+      .footer-top{grid-template-columns:1fr}
+
+      .footer-bottom{flex-direction:column}
+
+      .header-actions .button{font-size:0}
+
+      .header-actions .button:after{content:"Join";font-size:9px}
+
+    }
+
+  </style>
+
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="wrap topbar-inner">
-      <div><span class="topbar-dot"></span>Independent Black Media</div>
-      <div>Power · Culture · Perspective</div>
-    </div>
-  </div>
 
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
-        <span class="menu-lines" aria-hidden="true"><span></span><span></span><span></span></span>
-        Menu
-      </button>
+  <div class="topbar">
 
-      <a href="#" class="brand" aria-label="Frequency Black home">
-        Frequency <span>Black</span>
-      </a>
+    <div class="wrap topbar-inner">
 
-      <div class="header-actions">
-        <a class="text-link" href="#latest">Latest</a>
-        <a class="button blue" href="#newsletter">Join the Frequency</a>
-      </div>
-    </div>
+      <div><span class="topbar-dot"></span>Independent Black Media</div>
 
-    <div class="nav-row">
-      <nav class="wrap nav" aria-label="Primary navigation">
-        <a class="active" href="#">Home</a>
-        <a href="#power">Power</a>
-        <a href="#culture">Culture</a>
-        <a href="#business">Business</a>
-        <a href="#technology">Technology</a>
-        <a href="#pulse">Culture Pulse</a>
-        <a href="#originals">Originals</a>
-      </nav>
-    </div>
-  </header>
+      <div>Power · Community · Environment · Property</div>
 
-  <main>
-    <section class="hero">
-      <div class="wrap">
-        <div class="eyebrow">Frequency Black</div>
-        <div class="hero-grid">
-          <h1>
-            The signal behind<br>
-            <span class="tone">Black power & culture.</span>
-          </h1>
+    </div>
 
-          <div class="hero-side">
-            <p>
-              <strong>Frequency Black</strong> is a digital media company built to explain what matters,
-              challenge what is accepted, and document the people, ideas, and forces shaping Black life.
-            </p>
-            <a href="#latest" class="button">Explore the latest</a>
-          </div>
-        </div>
-      </div>
-    </section>
+  </div>
 
-    <section class="features" id="latest">
-      <div class="wrap">
-        <div class="feature-grid">
-          <article class="story-card large">
-            <span class="tag">The Lead</span>
-            <h2>The stories shaping the next era of Black America.</h2>
-            <p>
-              Reporting, analysis, and perspective on power, institutions, culture, economics,
-              technology, and the people moving the conversation forward.
-            </p>
-            <div class="story-meta">Frequency Black Editorial Desk</div>
-          </article>
+  <header class="site-header">
 
-          <article class="story-card">
-            <span class="tag">Power</span>
-            <h3>Who has influence — and how is it being used?</h3>
-            <p>Follow the decisions, institutions, policies, and networks that shape everyday life.</p>
-            <div class="story-meta">Read the briefing</div>
-          </article>
+    <div class="wrap header-inner">
 
-          <article class="story-card">
-            <span class="tag">Culture</span>
-            <h3>Culture is not a side story. It is the story.</h3>
-            <p>Music, film, fashion, internet culture, identity, and the ideas defining the moment.</p>
-            <div class="story-meta">Enter culture</div>
-          </article>
-        </div>
-      </div>
-    </section>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
 
-    <section class="section" id="power">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <span class="section-kicker">01 / Power</span>
-            <h2 class="section-title">Follow the <span>power.</span></h2>
-          </div>
-          <a href="#" class="view-all">View all stories →</a>
-        </div>
+        <span class="menu-lines" aria-hidden="true"><span></span><span></span><span></span></span>
 
-        <div class="article-grid">
-          <article class="article-card">
-            <div class="thumb"></div>
-            <div class="category">Politics + Policy</div>
-            <h3>What changed, who benefits, and what happens next.</h3>
-            <p>Clear analysis without the noise — focused on consequences, leverage, and accountability.</p>
-            <div class="meta">Analysis · 6 min read</div>
-          </article>
+        Menu
 
-          <article class="article-card">
-            <div class="thumb"></div>
-            <div class="category">Institutions</div>
-            <h3>The systems behind the headlines deserve scrutiny too.</h3>
-            <p>Understanding the agencies, companies, organizations, and structures behind public decisions.</p>
-            <div class="meta">Explainer · 5 min read</div>
-          </article>
+      </button>
 
-          <article class="article-card">
-            <div class="thumb"></div>
-            <div class="category">Leadership</div>
-            <h3>Influence is measurable. So is impact.</h3>
-            <p>Profiles and reporting on leaders shaping policy, business, culture, and civic life.</p>
-            <div class="meta">Profile · 8 min read</div>
-          </article>
-        </div>
-      </div>
-    </section>
+      <a href="#" class="brand" aria-label="Frequency Black home">
 
-    <section class="section" id="culture">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <span class="section-kicker">02 / Culture</span>
-            <h2 class="section-title">Read the <span>room.</span></h2>
-          </div>
-          <a href="#" class="view-all">View all culture →</a>
-        </div>
+        Frequency <span>Black</span>
 
-        <div class="article-grid">
-          <article class="article-card">
-            <div class="thumb"></div>
-            <div class="category">Music</div>
-            <h3>Artists are building ecosystems, not just audiences.</h3>
-            <p>How creators are turning reach into ownership, influence, and durable cultural power.</p>
-            <div class="meta">Culture · 7 min read</div>
-          </article>
+      </a>
 
-          <article class="article-card">
-            <div class="thumb"></div>
-            <div class="category">Film + Television</div>
-            <h3>Representation matters. Control matters more.</h3>
-            <p>A sharper look at who owns the stories, who gets paid, and who gets to decide what reaches the screen.</p>
-            <div class="meta">Industry · 6 min read</div>
-          </article>
+      <div class="header-actions">
 
-          <article class="article-card">
-            <div class="thumb"></div>
-            <div class="category">Internet Culture</div>
-            <h3>The feed moves fast. Context should move faster.</h3>
-            <p>Memes, moments, arguments, and online movements — decoded beyond the timeline.</p>
-            <div class="meta">Culture Pulse · 4 min read</div>
-          </article>
-        </div>
-      </div>
-    </section>
+        <a class="text-link" href="#latest">Latest</a>
 
-    <section class="pulse" id="pulse">
-      <div class="wrap pulse-grid">
-        <div class="pulse-mark" aria-hidden="true">
-          <span>Culture<br>Pulse</span>
-        </div>
+        <a class="button blue" href="#newsletter">Join the Frequency</a>
 
-        <div class="pulse-copy">
-          <span class="section-kicker">Frequency Black Original</span>
-          <h2>Culture <span>Pulse.</span></h2>
-          <p>
-            A fast, sharp read on the cultural stories moving across music, media, entertainment,
-            social platforms, and everyday conversation — with the context the algorithm leaves out.
-          </p>
-          <a href="#" class="button blue">Read Culture Pulse</a>
-        </div>
-      </div>
-    </section>
+      </div>
 
-    <section class="section" id="business">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <span class="section-kicker">03 / Business</span>
-            <h2 class="section-title">Money. Ownership. <span>Leverage.</span></h2>
-          </div>
-          <a href="#" class="view-all">View all business →</a>
-        </div>
+    </div>
 
-        <div class="article-grid">
-          <article class="article-card">
-            <div class="thumb"></div>
-            <div class="category">Black Business</div>
-            <h3>Ownership stories deserve more than celebration.</h3>
-            <p>We look at scale, capital, strategy, competition, and what it actually takes to build.</p>
-            <div class="meta">Business · 7 min read</div>
-          </article>
+    <div class="nav-row">
 
-          <article class="article-card">
-            <div class="thumb"></div>
-            <div class="category">Markets</div>
-            <h3>Economic shifts always land somewhere.</h3>
-            <p>Tracking jobs, prices, investing, housing, entrepreneurship, and the financial decisions affecting households.</p>
-            <div class="meta">Money · 5 min read</div>
-          </article>
+      <nav class="wrap nav" aria-label="Primary navigation">
 
-          <article class="article-card">
-            <div class="thumb"></div>
-            <div class="category">Brands</div>
-            <h3>Who profits from Black attention?</h3>
-            <p>Examining marketing, brand loyalty, cultural influence, partnerships, and where value actually flows.</p>
-            <div class="meta">Analysis · 6 min read</div>
-          </article>
-        </div>
-      </div>
-    </section>
+        <a class="active" href="#">Home</a>
 
-    <section class="section" id="technology">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <span class="section-kicker">04 / Technology</span>
-            <h2 class="section-title">The future is being <span>coded now.</span></h2>
-          </div>
-          <a href="#" class="view-all">View all technology →</a>
-        </div>
+        <a href="#politics-power">Politics &amp; Power</a>
 
-        <div class="article-grid">
-          <article class="article-card">
-            <div class="thumb"></div>
-            <div class="category">Artificial Intelligence</div>
-            <h3>AI is changing work, media, education, and power.</h3>
-            <p>Frequency Black tracks what the technology means in practice — not just what companies promise.</p>
-            <div class="meta">Technology · 8 min read</div>
-          </article>
+        <a href="#black-america-culture">Black America &amp; Culture</a>
 
-          <article class="article-card">
-            <div class="thumb"></div>
-            <div class="category">Platforms</div>
-            <h3>Algorithms are editors whether they admit it or not.</h3>
-            <p>How platforms shape visibility, culture, politics, business, and what millions of people see.</p>
-            <div class="meta">Platforms · 6 min read</div>
-          </article>
+        <a href="#real-estate">Real Estate</a>
 
-          <article class="article-card">
-            <div class="thumb"></div>
-            <div class="category">Innovation</div>
-            <h3>Black builders are shaping what comes next.</h3>
-            <p>Profiles of founders, engineers, researchers, and creators building at the edge of technology.</p>
-            <div class="meta">Profile · 7 min read</div>
-          </article>
-        </div>
-      </div>
-    </section>
+        <a href="#environment">Environment</a>
 
-    <section class="newsletter" id="newsletter">
-      <div class="wrap newsletter-grid">
-        <div>
-          <span class="section-kicker">Stay on frequency</span>
-          <h2>The signal, without the noise.</h2>
-          <p>
-            Get Frequency Black's essential stories, analysis, and Culture Pulse directly in your inbox.
-            No clutter. No constant alerts. Just what deserves your attention.
-          </p>
-        </div>
+        <a href="#pulse">Culture Pulse</a>
 
-        <form class="signup" id="newsletterForm">
-          <input id="emailInput" type="email" name="email" placeholder="Your email address" autocomplete="email" required />
-          <button class="button blue" type="submit">Join the Frequency</button>
-        </form>
-      </div>
-    </section>
-  </main>
+        <a href="#originals">Originals</a>
 
-  <footer>
-    <div class="wrap">
-      <div class="footer-top">
-        <div>
-          <div class="footer-brand">Frequency <span>Black</span><small>A Digital Media Company</small></div>
-        </div>
+      </nav>
 
-        <div class="footer-col">
-          <h4>Coverage</h4>
-          <a href="#power">Power</a>
-          <a href="#culture">Culture</a>
-          <a href="#business">Business</a>
-          <a href="#technology">Technology</a>
-        </div>
+    </div>
 
-        <div class="footer-col">
-          <h4>Frequency Black</h4>
-          <a href="#pulse">Culture Pulse</a>
-          <a href="#originals">Originals</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-        </div>
+  </header>
 
-        <div class="footer-col">
-          <h4>Follow</h4>
-          <a href="#">Instagram</a>
-          <a href="#">TikTok</a>
-          <a href="#">YouTube</a>
-          <a href="#">X / Twitter</a>
-        </div>
-      </div>
+  <main>
 
-      <div class="footer-bottom">
-        <span>© <span id="year"></span> Frequency Black. All rights reserved.</span>
-        <span>Power · Culture · Perspective</span>
-      </div>
-    </div>
-  </footer>
+    <section class="hero">
 
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <div class="mobile-menu-top">
-      <div class="brand">Frequency <span>Black</span></div>
-      <button class="close-btn" id="closeMenu" aria-label="Close menu">×</button>
-    </div>
-    <nav class="mobile-links">
-      <a href="#">Home</a>
-      <a href="#power">Power</a>
-      <a href="#culture">Culture</a>
-      <a href="#business">Business</a>
-      <a href="#technology">Technology</a>
-      <a href="#pulse">Culture Pulse</a>
-      <a href="#originals">Originals</a>
-    </nav>
-  </div>
+      <div class="wrap">
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+        <div class="eyebrow">Frequency Black</div>
 
-    const menuBtn = document.getElementById("menuBtn");
-    const closeMenu = document.getElementById("closeMenu");
-    const mobileMenu = document.getElementById("mobileMenu");
+        <div class="hero-grid">
 
-    function openMenu(){
-      mobileMenu.classList.add("open");
-      mobileMenu.setAttribute("aria-hidden","false");
-      document.body.style.overflow = "hidden";
-    }
+          <h1>
 
-    function hideMenu(){
-      mobileMenu.classList.remove("open");
-      mobileMenu.setAttribute("aria-hidden","true");
-      document.body.style.overflow = "";
-    }
+            The signal behind<br>
 
-    menuBtn.addEventListener("click", openMenu);
-    closeMenu.addEventListener("click", hideMenu);
+            <span class="tone">Black power & culture.</span>
 
-    mobileMenu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", hideMenu);
-    });
+          </h1>
 
-    // The newsletter form can be connected to Supabase in supabase.js.
-    document.getElementById("newsletterForm").addEventListener("submit", function(e){
-      // Prevent a page refresh while your Supabase handler processes the signup.
-      // Remove this listener if your supabase.js already binds to #newsletterForm.
-      if (typeof window.handleNewsletterSignup !== "function") {
-        e.preventDefault();
-        const email = document.getElementById("emailInput").value.trim();
-        if (email) {
-          alert("Newsletter form is ready to connect to Supabase.");
-        }
-      }
-    });
-  </script>
+          <div class="hero-side">
 
-  <!-- Frequency Black / Supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase.js"></script>
+            <p>
+
+              <strong>Frequency Black</strong> is a digital media company built to explain what matters,
+
+              challenge what is accepted, and document the people, ideas, and forces shaping Black life.
+
+            </p>
+
+            <a href="#latest" class="button">Explore the latest</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="features" id="latest">
+
+      <div class="wrap">
+
+        <div class="feature-grid">
+
+          <article class="story-card large">
+
+            <span class="tag">The Frequency</span>
+
+            <h2>The stories that matter most right now.</h2>
+
+            <p>
+
+              Reporting, analysis, and perspective on power, institutions, culture, economics,
+
+              technology, and the people moving the conversation forward.
+
+            </p>
+
+            <div class="story-meta">Frequency Black Editorial Desk</div>
+
+          </article>
+
+          <article class="story-card">
+
+            <span class="tag">Politics &amp; Power</span>
+
+            <h3>Who has influence — and how is it being used?</h3>
+
+            <p>Follow the decisions, institutions, policies, and networks that shape everyday life.</p>
+
+            <div class="story-meta">Read the briefing</div>
+
+          </article>
+
+          <article class="story-card">
+
+            <span class="tag">Black America &amp; Culture</span>
+
+            <h3>Culture is not a side story. It is the story.</h3>
+
+            <p>Music, film, fashion, internet culture, identity, and the ideas defining the moment.</p>
+
+            <div class="story-meta">Enter culture</div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="section" id="politics-power">
+
+      <div class="wrap">
+
+        <div class="section-head">
+
+          <div>
+
+            <span class="section-kicker">01 / Politics &amp; Power</span>
+
+            <h2 class="section-title">Follow the <span>power.</span></h2>
+
+          </div>
+
+          <a href="#" class="view-all">View all stories →</a>
+
+        </div>
+
+        <div class="article-grid">
+
+          <article class="article-card">
+
+            <div class="thumb"></div>
+
+            <div class="category">Politics + Policy</div>
+
+            <h3>What changed, who benefits, and what happens next.</h3>
+
+            <p>Clear analysis without the noise — focused on consequences, leverage, and accountability.</p>
+
+            <div class="meta">Analysis · 6 min read</div>
+
+          </article>
+
+          <article class="article-card">
+
+            <div class="thumb"></div>
+
+            <div class="category">Institutions</div>
+
+            <h3>The systems behind the headlines deserve scrutiny too.</h3>
+
+            <p>Understanding the agencies, companies, organizations, and structures behind public decisions.</p>
+
+            <div class="meta">Explainer · 5 min read</div>
+
+          </article>
+
+          <article class="article-card">
+
+            <div class="thumb"></div>
+
+            <div class="category">Elections + Civic Power</div>
+
+            <h3>Influence is measurable. So is impact.</h3>
+
+            <p>Track elections, voting rights, civic institutions, leadership, and the forces shaping political representation.</p>
+
+            <div class="meta">Profile · 8 min read</div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="section" id="black-america-culture">
+
+      <div class="wrap">
+
+        <div class="section-head">
+
+          <div>
+
+            <span class="section-kicker">02 / Black America &amp; Culture</span>
+
+            <h2 class="section-title">Black life. <span>In full.</span></h2>
+
+          </div>
+
+          <a href="#" class="view-all">View all Black America →</a>
+
+        </div>
+
+        <div class="article-grid">
+
+          <article class="article-card">
+
+            <div class="thumb"></div>
+
+            <div class="category">Community + Culture</div>
+
+            <h3>Black life is bigger than a single beat.</h3>
+
+            <p>Community, identity, arts, education, media, and the forces defining everyday Black experience.</p>
+
+            <div class="meta">Culture · 7 min read</div>
+
+          </article>
+
+          <article class="article-card">
+
+            <div class="thumb"></div>
+
+            <div class="category">Business + Institutions</div>
+
+            <h3>Representation matters. Control matters more.</h3>
+
+            <p>Reporting on Black businesses, institutions, leaders, capital, education, and long-term community power.</p>
+
+            <div class="meta">Industry · 6 min read</div>
+
+          </article>
+
+          <article class="article-card">
+
+            <div class="thumb"></div>
+
+            <div class="category">Media + Technology</div>
+
+            <h3>The feed moves fast. Context should move faster.</h3>
+
+            <p>Media, technology, digital culture, ideas, and online movements — decoded beyond the timeline.</p>
+
+            <div class="meta">Culture Pulse · 4 min read</div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="pulse" id="pulse">
+
+      <div class="wrap pulse-grid">
+
+        <div class="pulse-mark" aria-hidden="true">
+
+          <span>Culture<br>Pulse</span>
+
+        </div>
+
+        <div class="pulse-copy">
+
+          <span class="section-kicker">Frequency Black Original</span>
+
+          <h2>Culture <span>Pulse.</span></h2>
+
+          <p>
+
+            A fast, sharp read on the cultural stories moving across music, media, entertainment,
+
+            social platforms, and everyday conversation — with the context the algorithm leaves out.
+
+          </p>
+
+          <a href="#" class="button blue">Read Culture Pulse</a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="section" id="real-estate">
+
+      <div class="wrap">
+
+        <div class="section-head">
+
+          <div>
+
+            <span class="section-kicker">03 / Real Estate</span>
+
+            <h2 class="section-title">Land. Housing. <span>Ownership.</span></h2>
+
+          </div>
+
+          <a href="#" class="view-all">View all real estate →</a>
+
+        </div>
+
+        <div class="article-grid">
+
+          <article class="article-card">
+
+            <div class="thumb"></div>
+
+            <div class="category">Homeownership</div>
+
+            <h3>Property ownership remains one of the biggest wealth questions in America.</h3>
+
+            <p>Track affordability, mortgages, lending, homeownership, and the barriers shaping who gets to build equity.</p>
+
+            <div class="meta">Business · 7 min read</div>
+
+          </article>
+
+          <article class="article-card">
+
+            <div class="thumb"></div>
+
+            <div class="category">Housing + Development</div>
+
+            <h3>Growth always changes a neighborhood.</h3>
+
+            <p>Follow development, zoning, housing supply, affordability, displacement, and the projects reshaping communities.</p>
+
+            <div class="meta">Money · 5 min read</div>
+
+          </article>
+
+          <article class="article-card">
+
+            <div class="thumb"></div>
+
+            <div class="category">Commercial + Community</div>
+
+            <h3>Who owns the places where communities live, work, and build?</h3>
+
+            <p>Commercial property, neighborhood investment, land ownership, development capital, and community wealth.</p>
+
+            <div class="meta">Analysis · 6 min read</div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="section" id="environment">
+
+      <div class="wrap">
+
+        <div class="section-head">
+
+          <div>
+
+            <span class="section-kicker">04 / Environment</span>
+
+            <h2 class="section-title">Where we live <span>matters.</span></h2>
+
+          </div>
+
+          <a href="#" class="view-all">View all environment →</a>
+
+        </div>
+
+        <div class="article-grid">
+
+          <article class="article-card">
+
+            <div class="thumb"></div>
+
+            <div class="category">Climate + Justice</div>
+
+            <h3>Climate risk is also a question of power and inequality.</h3>
+
+            <p>Track climate change, environmental justice, pollution, extreme weather, and who bears the greatest costs.</p>
+
+            <div class="meta">Technology · 8 min read</div>
+
+          </article>
+
+          <article class="article-card">
+
+            <div class="thumb"></div>
+
+            <div class="category">Energy + Infrastructure</div>
+
+            <h3>Infrastructure decisions determine who is protected and who is exposed.</h3>
+
+            <p>Energy, utilities, transportation, water, public investment, and the systems communities depend on.</p>
+
+            <div class="meta">Platforms · 6 min read</div>
+
+          </article>
+
+          <article class="article-card">
+
+            <div class="thumb"></div>
+
+            <div class="category">Health + Place</div>
+
+            <h3>Your ZIP code can shape your exposure to environmental risk.</h3>
+
+            <p>Reporting on air, water, heat, land use, disasters, and the environmental conditions affecting public health.</p>
+
+            <div class="meta">Profile · 7 min read</div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="newsletter" id="newsletter">
+
+      <div class="wrap newsletter-grid">
+
+        <div>
+
+          <span class="section-kicker">Stay on frequency</span>
+
+          <h2>The signal, without the noise.</h2>
+
+          <p>
+
+            Get Frequency Black's essential stories, analysis, and Culture Pulse directly in your inbox.
+
+            No clutter. No constant alerts. Just what deserves your attention.
+
+          </p>
+
+        </div>
+
+        <form class="signup" id="newsletterForm">
+
+          <input id="emailInput" type="email" name="email" placeholder="Your email address" autocomplete="email" required />
+
+          <button class="button blue" type="submit">Join the Frequency</button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <div class="wrap">
+
+      <div class="footer-top">
+
+        <div>
+
+          <div class="footer-brand">Frequency <span>Black</span><small>A Digital Media Company</small></div>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Coverage</h4>
+
+          <a href="#politics-power">Politics &amp; Power</a>
+
+          <a href="#black-america-culture">Black America &amp; Culture</a>
+
+          <a href="#real-estate">Real Estate</a>
+
+          <a href="#environment">Environment</a>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Frequency Black</h4>
+
+          <a href="#pulse">Culture Pulse</a>
+
+          <a href="#originals">Originals</a>
+
+          <a href="#">About</a>
+
+          <a href="#">Contact</a>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Follow</h4>
+
+          <a href="#">Instagram</a>
+
+          <a href="#">TikTok</a>
+
+          <a href="#">YouTube</a>
+
+          <a href="#">X / Twitter</a>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <span>© <span id="year"></span> Frequency Black. All rights reserved.</span>
+
+        <span>Power · Community · Environment · Property</span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+
+    <div class="mobile-menu-top">
+
+      <div class="brand">Frequency <span>Black</span></div>
+
+      <button class="close-btn" id="closeMenu" aria-label="Close menu">×</button>
+
+    </div>
+
+    <nav class="mobile-links">
+
+      <a href="#">Home</a>
+
+      <a href="#politics-power">Politics &amp; Power</a>
+
+      <a href="#black-america-culture">Black America &amp; Culture</a>
+
+      <a href="#real-estate">Real Estate</a>
+
+      <a href="#environment">Environment</a>
+
+      <a href="#pulse">Culture Pulse</a>
+
+      <a href="#originals">Originals</a>
+
+    </nav>
+
+  </div>
+
+  <script>
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById("menuBtn");
+
+    const closeMenu = document.getElementById("closeMenu");
+
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    function openMenu(){
+
+      mobileMenu.classList.add("open");
+
+      mobileMenu.setAttribute("aria-hidden","false");
+
+      document.body.style.overflow = "hidden";
+
+    }
+
+    function hideMenu(){
+
+      mobileMenu.classList.remove("open");
+
+      mobileMenu.setAttribute("aria-hidden","true");
+
+      document.body.style.overflow = "";
+
+    }
+
+    menuBtn.addEventListener("click", openMenu);
+
+    closeMenu.addEventListener("click", hideMenu);
+
+    mobileMenu.querySelectorAll("a").forEach(link => {
+
+      link.addEventListener("click", hideMenu);
+
+    });
+
+    // The newsletter form can be connected to Supabase in supabase.js.
+
+    document.getElementById("newsletterForm").addEventListener("submit", function(e){
+
+      // Prevent a page refresh while your Supabase handler processes the signup.
+
+      // Remove this listener if your supabase.js already binds to #newsletterForm.
+
+      if (typeof window.handleNewsletterSignup !== "function") {
+
+        e.preventDefault();
+
+        const email = document.getElementById("emailInput").value.trim();
+
+        if (email) {
+
+          alert("Newsletter form is ready to connect to Supabase.");
+
+        }
+
+      }
+
+    });
+
+  </script>
+
+  <!-- Frequency Black / Supabase -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="supabase.js"></script>
+
 </body>
+
 </html>
