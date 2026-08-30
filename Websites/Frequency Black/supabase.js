@@ -13,25 +13,60 @@ async function loadFrequencyStories() {
       id,
       headline,
       slug,
-      short_summary,
-      what_happened,
-      why_it_matters,
-      importance_score,
+      summary_short,
+      summary_long,
+      image_url,
       published_at,
+      importance_score,
       is_frequency,
+      featured_home,
       categories (
         name,
         slug
       )
     `)
-    .in("status", ["published", "developing"])
     .eq("publish_to_web", true)
-    .order("importance_score", { ascending: false });
+    .in("status", ["published", "developing"])
+    .order("importance_score", { ascending: false })
+    .limit(20);
 
   if (error) {
     console.error("Frequency Black Supabase error:", error);
     return [];
   }
 
+  console.log("Frequency Black stories:", data);
   return data;
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const stories = await loadFrequencyStories();
+
+  const frequencyStory = stories.find(
+    story => story.is_frequency === true
+  );
+
+  if (!frequencyStory) {
+    console.log("No Frequency story found.");
+    return;
+  }
+
+  const headline = document.querySelector("[data-frequency-headline]");
+  const summary = document.querySelector("[data-frequency-summary]");
+  const link = document.querySelector("[data-frequency-link]");
+
+  if (headline) {
+    headline.textContent = frequencyStory.headline;
+  }
+
+  if (summary) {
+    summary.textContent =
+      frequencyStory.summary_short ||
+      frequencyStory.summary_long ||
+      "";
+  }
+
+  if (link) {
+    link.href = `article.html?slug=${frequencyStory.slug}`;
+  }
+});
