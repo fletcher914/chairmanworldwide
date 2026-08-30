@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Frequency Black is an independent digital media company covering power, culture, business, technology, and the stories shaping Black life." />
+  <meta name="description" content="Frequency Black is an independent digital media company covering politics and power, environment, Black America and culture, real estate, and the stories shaping Black life." />
   <meta name="theme-color" content="#050505" />
-  <title>Frequency Black — Power. Culture. Perspective.</title>
+  <title>Frequency Black — Power. Community. Environment. Property.</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -633,7 +634,7 @@
   <div class="topbar">
     <div class="wrap topbar-inner">
       <div><span class="topbar-dot"></span>Independent Black Media</div>
-      <div>Power · Culture · Perspective</div>
+      <div>Power · Community · Environment · Property</div>
     </div>
   </div>
 
@@ -657,12 +658,12 @@
     <div class="nav-row">
       <nav class="wrap nav" aria-label="Primary navigation">
         <a class="active" href="#">Home</a>
-        <a href="#power">Power</a>
-        <a href="#culture">Culture</a>
-        <a href="#business">Business</a>
-        <a href="#technology">Technology</a>
+        <a href="#latest">The Frequency</a>
+        <a href="#politics-power">Politics &amp; Power</a>
+        <a href="#black-america-culture">Black America &amp; Culture</a>
+        <a href="#real-estate">Real Estate</a>
+        <a href="#environment">Environment</a>
         <a href="#pulse">Culture Pulse</a>
-        <a href="#originals">Originals</a>
       </nav>
     </div>
   </header>
@@ -692,13 +693,19 @@
       <div class="wrap">
         <div class="feature-grid">
           <article class="story-card large">
-            <span class="tag">The Lead</span>
-            <h2>The stories shaping the next era of Black America.</h2>
-            <p>
-              Reporting, analysis, and perspective on power, institutions, culture, economics,
-              technology, and the people moving the conversation forward.
+            <span class="tag" data-frequency-category>The Frequency</span>
+            <h2 data-frequency-headline>Loading the Frequency...</h2>
+            <p data-frequency-summary>
+              Connecting to the Frequency Black news desk.
             </p>
-            <div class="story-meta">Frequency Black Editorial Desk</div>
+            <div class="story-meta">
+              <span data-frequency-date></span>
+              <span aria-hidden="true"> · </span>
+              Frequency Black Editorial Desk
+            </div>
+            <a href="#" data-frequency-link class="button blue" style="margin-top:20px;width:max-content;">
+              Read Story
+            </a>
           </article>
 
           <article class="story-card">
@@ -718,17 +725,17 @@
       </div>
     </section>
 
-    <section class="section" id="power">
+    <section class="section" id="politics-power">
       <div class="wrap">
         <div class="section-head">
           <div>
-            <span class="section-kicker">01 / Power</span>
+            <span class="section-kicker">01 / Politics &amp; Power</span>
             <h2 class="section-title">Follow the <span>power.</span></h2>
           </div>
           <a href="#" class="view-all">View all stories →</a>
         </div>
 
-        <div class="article-grid">
+        <div class="article-grid" data-category-grid="politics-power">
           <article class="article-card">
             <div class="thumb"></div>
             <div class="category">Politics + Policy</div>
@@ -756,17 +763,17 @@
       </div>
     </section>
 
-    <section class="section" id="culture">
+    <section class="section" id="black-america-culture">
       <div class="wrap">
         <div class="section-head">
           <div>
-            <span class="section-kicker">02 / Culture</span>
-            <h2 class="section-title">Read the <span>room.</span></h2>
+            <span class="section-kicker">02 / Black America &amp; Culture</span>
+            <h2 class="section-title">Black life in <span>full context.</span></h2>
           </div>
           <a href="#" class="view-all">View all culture →</a>
         </div>
 
-        <div class="article-grid">
+        <div class="article-grid" data-category-grid="black-america-culture">
           <article class="article-card">
             <div class="thumb"></div>
             <div class="category">Music</div>
@@ -812,17 +819,17 @@
       </div>
     </section>
 
-    <section class="section" id="business">
+    <section class="section" id="real-estate">
       <div class="wrap">
         <div class="section-head">
           <div>
-            <span class="section-kicker">03 / Business</span>
-            <h2 class="section-title">Money. Ownership. <span>Leverage.</span></h2>
+            <span class="section-kicker">03 / Real Estate</span>
+            <h2 class="section-title">Property. Place. <span>Ownership.</span></h2>
           </div>
           <a href="#" class="view-all">View all business →</a>
         </div>
 
-        <div class="article-grid">
+        <div class="article-grid" data-category-grid="real-estate">
           <article class="article-card">
             <div class="thumb"></div>
             <div class="category">Black Business</div>
@@ -850,17 +857,17 @@
       </div>
     </section>
 
-    <section class="section" id="technology">
+    <section class="section" id="environment">
       <div class="wrap">
         <div class="section-head">
           <div>
-            <span class="section-kicker">04 / Technology</span>
-            <h2 class="section-title">The future is being <span>coded now.</span></h2>
+            <span class="section-kicker">04 / Environment</span>
+            <h2 class="section-title">Climate. Health. <span>Place.</span></h2>
           </div>
           <a href="#" class="view-all">View all technology →</a>
         </div>
 
-        <div class="article-grid">
+        <div class="article-grid" data-category-grid="environment">
           <article class="article-card">
             <div class="thumb"></div>
             <div class="category">Artificial Intelligence</div>
@@ -916,10 +923,10 @@
 
         <div class="footer-col">
           <h4>Coverage</h4>
-          <a href="#power">Power</a>
-          <a href="#culture">Culture</a>
-          <a href="#business">Business</a>
-          <a href="#technology">Technology</a>
+          <a href="#politics-power">Politics &amp; Power</a>
+          <a href="#black-america-culture">Black America &amp; Culture</a>
+          <a href="#real-estate">Real Estate</a>
+          <a href="#environment">Environment</a>
         </div>
 
         <div class="footer-col">
@@ -941,7 +948,7 @@
 
       <div class="footer-bottom">
         <span>© <span id="year"></span> Frequency Black. All rights reserved.</span>
-        <span>Power · Culture · Perspective</span>
+        <span>Power · Community · Environment · Property</span>
       </div>
     </div>
   </footer>
@@ -953,12 +960,12 @@
     </div>
     <nav class="mobile-links">
       <a href="#">Home</a>
-      <a href="#power">Power</a>
-      <a href="#culture">Culture</a>
-      <a href="#business">Business</a>
-      <a href="#technology">Technology</a>
+      <a href="#latest">The Frequency</a>
+      <a href="#politics-power">Politics &amp; Power</a>
+      <a href="#black-america-culture">Black America &amp; Culture</a>
+      <a href="#real-estate">Real Estate</a>
+      <a href="#environment">Environment</a>
       <a href="#pulse">Culture Pulse</a>
-      <a href="#originals">Originals</a>
     </nav>
   </div>
 
